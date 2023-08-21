@@ -50,6 +50,15 @@ void solve()
    Point p = getItemPos();
    cout <<p.row ; 
    cout << p.col;
+
+   //Check if horizontal is free
+   if (isWalkable(1,0))
+   {
+    moveRobot(1,0)
+   }
+   //Check if Vertical is free
+
+   printMaze();
 }
 
 int main(int argc, char const *argv[])
