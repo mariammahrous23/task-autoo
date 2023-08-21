@@ -50,6 +50,7 @@ void solve()
    Point p = getItemPos();
    cout <<p.row ; 
    cout << p.col;
+   cout << endl;
 
    //Check if horizontal is free
    if (isWalkable(1,0))
@@ -59,6 +60,7 @@ void solve()
    //Check if Vertical is free
 
    printMaze();
+   printAround();
 }
 
 int main(int argc, char const *argv[])
