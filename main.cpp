@@ -57,8 +57,8 @@ int main(int argc, char const *argv[])
     initialize();
 
     // Game loop
-    while (true)
-    {
+  //  while (true)
+    //{
         // Check reached goal
         if (hasReachedGoal())
         {
@@ -69,7 +69,7 @@ int main(int argc, char const *argv[])
 
         // Solve maze
         solve();
-    }
+    //}
 
     return 0;
 }
