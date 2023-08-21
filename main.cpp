@@ -64,7 +64,7 @@ int main(int argc, char const *argv[])
         {
             // Hurray!
             cout << "Reached Goal!" << endl;
-            break;
+           // break;
         }
 
         // Solve maze
