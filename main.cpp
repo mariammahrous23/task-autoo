@@ -40,7 +40,7 @@ void solve()
         printMaze()  : prints warehouse as a whole
         printAround(): prints part of warehouse around robot
     */
-    printMaze();
+   
 }
 
 int main(int argc, char const *argv[])
