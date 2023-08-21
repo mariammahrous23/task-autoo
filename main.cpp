@@ -42,9 +42,10 @@ void solve()
     */
    
    //Normally The shortest soln to solve it is moving all the way vertically and horizontally
+  Point ro = getRobotPos();
   
-   cout <<getRobotPos() ; 
-   cout << getGoalPos();
+   cout <<robotPos.row ; 
+   cout << robotPos.col;
    
 }
 
