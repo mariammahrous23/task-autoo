@@ -42,10 +42,9 @@ void solve()
     */
    
    //Normally The shortest soln to solve it is moving all the way vertically and horizontally
-   int x=getRobotPos;
-   int y =getGoalPos;
-   cout <<x ; 
-   cout << Y;
+  
+   cout <<getRobotPos() ; 
+   cout << getGoalPos();
    
 }
 
