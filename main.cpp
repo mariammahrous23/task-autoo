@@ -47,6 +47,9 @@ void solve()
    cout <<ro.row ; 
    cout << ro.col;
    
+   point p=getItemPos();
+   cout <<ro.row ; 
+   cout << ro.col;
 }
 
 int main(int argc, char const *argv[])
