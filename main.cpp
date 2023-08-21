@@ -41,6 +41,12 @@ void solve()
         printAround(): prints part of warehouse around robot
     */
    
+   //Normally The shortest soln to solve it is moving all the way vertically and horizontally
+   int x=getRobotPos;
+   int y =getGoalPos;
+   cout <<x ; 
+   cout << Y;
+   
 }
 
 int main(int argc, char const *argv[])
