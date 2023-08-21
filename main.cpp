@@ -44,8 +44,8 @@ void solve()
    //Normally The shortest soln to solve it is moving all the way vertically and horizontally
   Point ro = getRobotPos();
   
-   cout <<robotPos.row ; 
-   cout << robotPos.col;
+   cout <<ro.row ; 
+   cout << ro.col;
    
 }
 
