@@ -49,8 +49,8 @@ void solve()
     cout << "YOU REACHED PICKUP";
   }
 
-  Point R = getRobotPos;
-  Point P =getItemPos;
+  Point R = getRobotPos();
+  Point P =getItemPos();
 
   //The shortest way if there is no obstacles to move diagonally if it possible 
 
