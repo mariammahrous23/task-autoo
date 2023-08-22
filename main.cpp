@@ -37,99 +37,41 @@ void solve2(Point D , Point R )
  
  // This will move diagnoally if possible at any time 
 
-    if (R.row > D.row && R.col > D.col )
+    if (R.row > D.row && R.col > D.col && isWalkable(-1,-1) )
     {
-        if(isWalkable(-1,-1))
-        {
-            moveRobot(-1,-1);
-        }
-        //ideally moving towards the goal is best
-        else if (isWalkable(-1,0))
-        {
-            moveRobot(-1,0);
-        }
-        else if(isWalkable(0,-1))
-        {
-            moveRobot(0,-1);
-        }
+        moveRobot(-1,-1);
     }
-    else if (R.row < D.row && R.col < D.col )
+    else if (R.row < D.row && R.col < D.col && isWalkable(1,1))
     {
-        if(isWalkable(1,1))
-        {
-            moveRobot(1,1);
-        }
-        //ideally moving towards the goal is best
-        else if (isWalkable(1,0))
-        {
-            moveRobot(1,0);
-        }
-        else if (isWalkable(0,1))
-        {
-            moveRobot(0,1);
-        }
+        moveRobot(1,1);
     }
-    else if (R.row > D.row && R.col < D.col )
+    else if (R.row > D.row && R.col < D.col && isWalkable(1,-1) )
     {
-        if(isWalkable(1,-1))
-        {
-            moveRobot(1,-1);
-        }
-        //ideally moving towards the goal is best
-        else if(isWalkable(1,0))
-        {
-            moveRobot(1,0);
-        }
-        else if (isWalkable(0,-1))
-        {
-            moveRobot(0,-1);
-        }
+        moveRobot(1,-1);
     }
-    else if (R.row < D.row && R.col > D.col )
-    {
-        if(isWalkable(-1,1))
-        {
-            moveRobot(-1,1);
-        }
-        //ideally moving towards the goal is best (no idea which moves is best)
-        else if(isWalkable(-1,0))
-        {
-            moveRobot(-1,0);
-        }
-        else if (isWalkable(0,1))
-        {
-            moveRobot(0,1);
-        }
+    else if (R.row < D.row && R.col > D.col && isWalkable(-1,1))
+    {  
+        moveRobot(-1,1);
     }
+       
 
   //Diagonal isn't an option 
-   else if (R.row == D.row && R.col > D.col )
+   else if (R.row == D.row && R.col > D.col && isWalkable(-1,0) )
     {
-        if(isWalkable(-1,0))
-        {
-            moveRobot(-1,0);
-        }
+        moveRobot(-1,0);
     }
-    else if (R.row == D.row && R.col < D.col )
+    else if (R.row == D.row && R.col < D.col && isWalkable(1,0))
     {
-        if(isWalkable(1,0))
-        {
-            moveRobot(1,0);
-        }
+        moveRobot(1,0);
     }
-    else if (R.row > D.row && R.col == D.col )
+    else if (R.row > D.row && R.col == D.col && isWalkable(0,-1))
     {
-        if(isWalkable(0,-1))
-        {
-            moveRobot(0,-1);
-        }
+        
+        moveRobot(0,-1);
     }
-    else if (R.row < D.row && R.col == D.col )
+    else if (R.row < D.row && R.col == D.col && isWalkable(0,1) )
     {
-        if(isWalkable(0,1))
-        {
-            moveRobot(0,1);
-        }
+        moveRobot(0,1);
     }
 
     printMaze();
