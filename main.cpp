@@ -40,27 +40,44 @@ void solve()
         printMaze()  : prints warehouse as a whole
         printAround(): prints part of warehouse around robot
     */
-   
-   //Normally The shortest soln to solve it is moving all the way vertically and horizontally
-  Point ro = getRobotPos();
-  
-   cout <<ro.row ; 
-   cout << ro.col;
-   
-   Point p = getItemPos();
-   cout <<p.row ; 
-   cout << p.col;
-   cout << endl;
 
-   //Check if horizontal is free
-   if (isWalkable(1,0))
-   {
-    moveRobot(1,1);
-   }
-   //Check if Vertical is free
 
-   printMaze();
-   printAround();
+
+  //For debugging purposes 
+  if (getRobotPos==getItemPos)
+  {
+    cout << "YOU REACHED PICKUP";
+  }
+
+  //The shortest way if there is no obstacles to move diagonally if it possible 
+
+  // in order to move diagonally the robot and pickup must be in (x,x) and (y,y) vertices
+
+  if (getRobotPos.x == getRobotPos.y && getItemPos.x == getItemPos.y)
+  {
+    if (getRobotPos.x > getItemPos.x )
+    {
+        if(isWalkable(-1,-1))
+        {
+            moveRobot(-1,-1)
+        }
+    }
+    else
+    {
+        if(isWalkable(1,1))
+        {
+            moveRobot(1,1)
+        }
+    }
+
+  }
+
+  //The 2nd shortest way is manhattan way 
+
+
+  //Find the soln 
+
+ 
 }
 
 int main(int argc, char const *argv[])
@@ -71,8 +88,8 @@ int main(int argc, char const *argv[])
     initialize();
 
     // Game loop
-  //  while (true)
-    //{
+ while (true)
+    {
         // Check reached goal
         if (hasReachedGoal())
         {
@@ -83,7 +100,7 @@ int main(int argc, char const *argv[])
 
         // Solve maze
         solve();
-    //}
+    }
 
     return 0;
 }
