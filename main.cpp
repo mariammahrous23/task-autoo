@@ -13,13 +13,18 @@ main.exe warehouse1.txt
 
 #include "warehouse.h"
 
+//GLOBAL VARIABLES 
+Pfound = false;
+
+
+
+
+
 void initialize()
 {
     /*
     This function will run after the warehouse is loaded.
     */
-   bool* Pfound = new bool;
-   *Pfound = false;
 }
 
 void solve2(Point D , Point R )
@@ -97,9 +102,9 @@ void solve()
   {
     cout << "YOU REACHED PICKUP";
     solve2(G,R);
-    *Pfound = true ;
+    Pfound = true ;
   }
-  else if (*Pfound)
+  else if (Pfound)
   {
     solve2(G,R);
   }
