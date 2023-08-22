@@ -14,6 +14,7 @@ main.exe warehouse1.txt
 #include "warehouse.h"
 
 //GLOBAL VARIABLES 
+//CHECK IF THIS CAN BE DONE
 bool Pfound = false;
 
 
@@ -124,15 +125,15 @@ int main(int argc, char const *argv[])
     initialize();
 
     // Game loop
-// while (true)
-for (int i=0 ; i< 4 ; i++)
+ while (true)
+//for (int i=0 ; i< 4 ; i++)
     {
         // Check reached goal
         if (hasReachedGoal())
         {
             // Hurray!
             cout << "Reached Goal!" << endl;
-            //break;
+            Break;
         }
 
         // Solve maze
