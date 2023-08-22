@@ -24,6 +24,7 @@ void initialize()
     /*
     This function will run after the warehouse is loaded.
     */
+    // Honestly have no idea what to do here
 }
 
 void solve2(Point D , Point R )
@@ -35,16 +36,6 @@ void solve2(Point D , Point R )
   */
  
  // This will move diagnoally if possible at any time 
-
-
-
- //DEBUG 
- if (D.row == getGoalPos().row && D.col == getGoalPos().col )
- {
-    cout <<endl;
-    cout<<"row"<<D.row<<endl;
-    cout<<"col"<<D.col<<endl;
- }
   if (R.row == R.col && D.row == D.col )
   {
     if (R.row > D.row )
@@ -66,6 +57,7 @@ void solve2(Point D , Point R )
  
 
   //Diagonal isn't an option 
+
 
     printMaze();
 }
@@ -91,15 +83,12 @@ void solve()
         printAround(): prints part of warehouse around robot
     */
 
- initialize(); // Call the initialize function
   Point R = getRobotPos();
   Point P =getItemPos();
   Point G =getGoalPos();
 
-  //For debugging purposes 
   if (R.row == P.row && R.col == P.col)
   {
-    cout << "YOU REACHED PICKUP";
     solve2(G,R);
     Pfound = true ;
   }
