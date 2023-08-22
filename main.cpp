@@ -66,11 +66,35 @@ void solve2(Point D , Point R )
         }
     }
 
-  
- 
-
   //Diagonal isn't an option 
-
+   else if (R.row == D.row && R.col > D.col )
+    {
+        if(isWalkable(-1,0))
+        {
+            moveRobot(-1,0);
+        }
+    }
+    else if (R.row == D.row && R.col < D.col )
+    {
+        if(isWalkable(1,0))
+        {
+            moveRobot(1,0);
+        }
+    }
+    else if (R.row > D.row && R.col == D.col )
+    {
+        if(isWalkable(0,-1))
+        {
+            moveRobot(0,-1);
+        }
+    }
+    else if (R.row < D.row && R.col == D.col )
+    {
+        if(isWalkable(0,1))
+        {
+            moveRobot(0,1);
+        }
+    }
 
     printMaze();
 }
