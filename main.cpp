@@ -18,6 +18,7 @@ void initialize()
     /*
     This function will run after the warehouse is loaded.
     */
+    //I honestly have no idea what exactly did you want here
 }
 
 void solve()
@@ -44,29 +45,38 @@ void solve()
 
   Point R = getRobotPos();
   Point P =getItemPos();
+  Point G =getGoalPos();
 
   //For debugging purposes 
   if (R.row == P.row && R.col == P.col)
   {
     cout << "YOU REACHED PICKUP";
+    solve2(G)
   }
+  else 
+  {
+    solve2(P)
+  }
+  moveRobot(5,5);
+}
 
- 
+void solve2(Point D)
+{
 
   //The shortest way if there is no obstacles to move diagonally if it possible 
+  // in order to move diagonally the robot and pickup/Goal
+  // must be in (x,x) and (y,y) vertices
 
-  // in order to move diagonally the robot and pickup must be in (x,x) and (y,y) vertices
-
-  if (R.row == R.col && P.row == P.col)
+  if (R.row == R.col && D.row == D.col)
   {
-    if (R.row > P.row )
+    if (R.row > D.row )
     {
         if(isWalkable(-1,-1))
         {
             moveRobot(-1,-1);
         }
     }
-    else if (R.row < P.row )
+    else if (R.row < D.row )
     {
         if(isWalkable(1,1))
         {
@@ -75,14 +85,14 @@ void solve()
     }
 
   }
-  printMaze();
+
 
   //The 2nd shortest way is manhattan way 
 
 
-  //Find the soln 
+  //Find 
 
- 
+    printMaze();
 }
 
 int main(int argc, char const *argv[])
