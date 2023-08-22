@@ -14,7 +14,7 @@ main.exe warehouse1.txt
 #include "warehouse.h"
 
 //GLOBAL VARIABLES 
-Pfound = false;
+bool Pfound = false;
 
 
 
