@@ -44,7 +44,7 @@ void solve()
 
 
   //For debugging purposes 
-  if (getRobotPos ()==getItemPos())
+  if (getRobotPos() == getItemPos())
   {
     cout << "YOU REACHED PICKUP";
   }
