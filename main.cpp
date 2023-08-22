@@ -55,7 +55,7 @@ void solve()
    //Check if horizontal is free
    if (isWalkable(1,0))
    {
-    moveRobot(5,1);
+    moveRobot(1,1);
    }
    //Check if Vertical is free
 
