@@ -97,6 +97,7 @@ void solve2(Point D , Point R )
     }
 
     printMaze();
+    cout<<endl;
 }
 
 void solve()
