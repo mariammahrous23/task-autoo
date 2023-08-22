@@ -129,6 +129,7 @@ void solve()
 struct ComparePositions {
     bool operator()(const Point& a, const Point& b) const {
         // Calculate Manhattan distances
+        Point goalPos = getGoalPos();
         int distanceA = abs(a.row - goalPos.row) + abs(a.col - goalPos.col);
         int distanceB = abs(b.row - goalPos.row) + abs(b.col - goalPos.col);
 
@@ -151,15 +152,14 @@ void solve3()
     pq.push(robotPos);
     parent[robotPos] = robotPos;
 
-    Point R = getRobotPos();    
-    Point G =getGoalPos();
+   
     while (!pq.empty()) {
         Point current = pq.top();
         pq.pop();
 
-        if (current.row == G.row && current.col == G.col) {
+        if (current.row == goalPos.row && current.col == goalPos.col) {
             // Path found, backtrack to move robot
-            while (!(current.row == R.row && current.col == R.col)) {
+            while (!(current.row == robotPos.row && current.col == robotPos.col)) {
                 Point prev = parent[current];
                 int moveRight = prev.row - current.row;
                 int moveDown = prev.col - current.col;
