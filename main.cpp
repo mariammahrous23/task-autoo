@@ -42,15 +42,16 @@ void solve()
     */
 
 
+  Point R = getRobotPos();
+  Point P =getItemPos();
 
   //For debugging purposes 
-  if (getRobotPos() == getItemPos())
+  if (R.row == P.row && R.col == P.col)
   {
     cout << "YOU REACHED PICKUP";
   }
 
-  Point R = getRobotPos();
-  Point P =getItemPos();
+ 
 
   //The shortest way if there is no obstacles to move diagonally if it possible 
 
