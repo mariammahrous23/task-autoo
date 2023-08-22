@@ -21,7 +21,7 @@ void initialize()
     //I honestly have no idea what exactly did you want here
 }
 
-void solve2(Point D)
+void solve2(Point D , Point R)
 {
 
   //The shortest way if there is no obstacles to move diagonally if it possible 
@@ -86,11 +86,19 @@ void solve()
   if (R.row == P.row && R.col == P.col)
   {
     cout << "YOU REACHED PICKUP";
+<<<<<<< HEAD
+    solve2(G,R)
+=======
     solve2(G);
+>>>>>>> 4dbd20c527538b6cfa0a0b7f8228d3045f79c88c
   }
   else 
   {
+<<<<<<< HEAD
+    solve2(P,R)
+=======
     solve2(P);
+>>>>>>> 4dbd20c527538b6cfa0a0b7f8228d3045f79c88c
   }
   moveRobot(5,5);
 }
