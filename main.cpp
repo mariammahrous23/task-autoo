@@ -133,7 +133,7 @@ int main(int argc, char const *argv[])
         {
             // Hurray!
             cout << "Reached Goal!" << endl;
-            Break;
+            break;
         }
 
         // Solve maze
