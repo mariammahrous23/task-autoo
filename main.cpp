@@ -66,7 +66,7 @@ void solve()
             moveRobot(-1,-1);
         }
     }
-    else
+    else if (R.row < P.row )
     {
         if(isWalkable(1,1))
         {
