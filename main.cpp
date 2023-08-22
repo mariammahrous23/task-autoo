@@ -12,6 +12,10 @@ main.exe warehouse1.txt
 */
 
 #include "warehouse.h"
+#include <queue>
+#include <vector>
+#include <map>
+#include <climits>
 
 //GLOBAL VARIABLES 
 //CHECK IF THIS CAN BE DONE
@@ -121,59 +125,62 @@ void solve()
     solve2(P,R);
   }
 }
+
+struct ComparePositions {
+    bool operator()(const Point& a, const Point& b) const {
+        // Calculate Manhattan distances
+        int distanceA = abs(a.x - goalPos.x) + abs(a.y - goalPos.y);
+        int distanceB = abs(b.x - goalPos.x) + abs(b.y - goalPos.y);
+
+        // Higher priority means lower distance
+        return distanceA > distanceB;
+    }
+};
+
+
+
+
 void solve3()
 {
-  
-    std::set<Position> visitedCells; // Keep track of visited cells
-   
-        // Get robot and goal positions
-        Position robotPos = getRobotPos();
-        Position goalPos = getGoalPos();
-        Position itemPos = getItemPos();
+    Point robotPos = getRobotPos();
+    Point goalPos = getGoalPos();
+    
+    std::priority_queue<Point, std::vector<Point>, ComparePositions> pq;
+    std::map<Point, Point> parent;
 
+    pq.push(robotPos);
+    parent[robotPos] = robotPos;
 
-        // If the robot is not at the item position, move towards the item
-        if (robotPos != itemPos) {
-            // Calculate the direction to move towards the item
-            int moveRight = (itemPos.x > robotPos.x) ? 1 : ((itemPos.x < robotPos.x) ? -1 : 0);
-            int moveDown = (itemPos.y > robotPos.y) ? 1 : ((itemPos.y < robotPos.y) ? -1 : 0);
+    while (!pq.empty()) {
+        Point current = pq.top();
+        pq.pop();
 
-            // Check if the target cell is walkable and not visited
-            if (isWalkable(moveRight, moveDown) && visitedCells.find({robotPos.x + moveRight, robotPos.y + moveDown}) == visitedCells.end()) {
+        if (current == goalPos) {
+            // Path found, backtrack to move robot
+            while (current != robotPos) {
+                Point prev = parent[current];
+                int moveRight = prev.x - current.x;
+                int moveDown = prev.y - current.y;
                 moveRobot(moveRight, moveDown);
-            } else {
-                // Handle case where target cell isn't walkable or visited
-                // Implement backtracking:
-                // Move back to the previous cell (undo the last move)
-                moveRobot(-moveRight, -moveDown);
+                current = prev;
             }
-        }
-        // If the robot is at the item position, pick up the item and move towards the goal
-        else {
-            // Calculate the direction to move towards the goal
-            int moveRight = (goalPos.x > robotPos.x) ? 1 : ((goalPos.x < robotPos.x) ? -1 : 0);
-            int moveDown = (goalPos.y > robotPos.y) ? 1 : ((goalPos.y < robotPos.y) ? -1 : 0);
-
-            // Check if the target cell is walkable and not visited
-            if (isWalkable(moveRight, moveDown) && visitedCells.find({robotPos.x + moveRight, robotPos.y + moveDown}) == visitedCells.end()) {
-                // Pick up the item (assuming there's a function for this)
-                pickUpItem();
-
-                // Move towards the goal
-                moveRobot(moveRight, moveDown);
-            } else {
-                // Move back to the previous cell (undo the last move)
-                moveRobot(-moveRight, -moveDown);
-            }
+            break;
         }
 
-        // Mark the current cell as visited
-        visitedCells.insert(robotPos);
-        printMaze();
+        // Expand neighbors and add to queue
+        for (int moveRight = -1; moveRight <= 1; ++moveRight) {
+            for (int moveDown = -1; moveDown <= 1; ++moveDown) {
+                if (isWalkable(moveRight, moveDown)) {
+                    Point next = {current.x + moveRight, current.y + moveDown};
+                    if (parent.find(next) == parent.end()) {
+                        parent[next] = current;
+                        pq.push(next);
+                    }
+                }
+            }
+        }
     }
-
-
-
+}
 
 
 int main(int argc, char const *argv[])
