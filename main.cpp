@@ -56,9 +56,9 @@ void solve()
 
   // in order to move diagonally the robot and pickup must be in (x,x) and (y,y) vertices
 
-  if (R.x == R.y && P.x == P.y)
+  if (R.row == R.col && P.row == P.col)
   {
-    if (R.x > P.x )
+    if (R.row > P.row )
     {
         if(isWalkable(-1,-1))
         {
