@@ -132,7 +132,6 @@ int main(int argc, char const *argv[])
 
     // Game loop
     while (true)
-   // for(int i=0 ; i<5 ; i++)
     {
         // Check reached goal
         if (hasReachedGoal()) //Doesn't seem to be working
