@@ -100,8 +100,8 @@ void solve()
   if (R.row == P.row && R.col == P.col)
   {
     cout << "YOU REACHED PICKUP";
-    P=R;
     solve2(G,R);
+    P=R;
   }
   else 
   {
