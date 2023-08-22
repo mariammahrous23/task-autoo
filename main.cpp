@@ -49,24 +49,27 @@ void solve()
     cout << "YOU REACHED PICKUP";
   }
 
+  Point R = getRobotPos;
+  Point P =getItemPos;
+
   //The shortest way if there is no obstacles to move diagonally if it possible 
 
   // in order to move diagonally the robot and pickup must be in (x,x) and (y,y) vertices
 
-  if (getRobotPos.x == getRobotPos.y && getItemPos.x == getItemPos.y)
+  if (R.x == R.y && P.x == P.y)
   {
-    if (getRobotPos.x > getItemPos.x )
+    if (R.x > P.x )
     {
         if(isWalkable(-1,-1))
         {
-            moveRobot(-1,-1)
+            moveRobot(-1,-1);
         }
     }
     else
     {
         if(isWalkable(1,1))
         {
-            moveRobot(1,1)
+            moveRobot(1,1);
         }
     }
 
