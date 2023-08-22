@@ -18,12 +18,8 @@ void initialize()
     /*
     This function will run after the warehouse is loaded.
     */
-    bool* Pfound; // Declare a pointer to know when p is found
-    bool Itemfound = false;
-    Pfound = &Itemfound; 
-
-    
-
+   bool* Pfound = new bool;
+   *Pfound = false;
 }
 
 void solve2(Point D , Point R )
