@@ -18,6 +18,9 @@ void initialize()
     /*
     This function will run after the warehouse is loaded.
     */
+    bool* Pfound; // Declare a pointer to know when p is found
+    bool Itemfound = false;
+    Pfound = &Itemfound; 
 
     
 
@@ -96,7 +99,8 @@ void solve()
   //For debugging purposes 
   if (R.row == P.row && R.col == P.col)
   {
-    //cout << "YOU REACHED PICKUP";
+    cout << "YOU REACHED PICKUP";
+    P=R;
     solve2(G,R);
   }
   else 
