@@ -86,11 +86,11 @@ void solve()
   if (R.row == P.row && R.col == P.col)
   {
     cout << "YOU REACHED PICKUP";
-    solve2(G,R)
+    solve2(G,R);
   }
   else 
   {
-    solve2(P,R)
+    solve2(P,R);
   }
   moveRobot(5,5);
 }
