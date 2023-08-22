@@ -74,6 +74,7 @@ void solve()
     }
 
   }
+  printMaze();
 
   //The 2nd shortest way is manhattan way 
 
@@ -91,7 +92,8 @@ int main(int argc, char const *argv[])
     initialize();
 
     // Game loop
- while (true)
+// while (true)
+for (int i=0 ; i< 4 ; i++)
     {
         // Check reached goal
         if (hasReachedGoal())
