@@ -18,17 +18,21 @@ void initialize()
     /*
     This function will run after the warehouse is loaded.
     */
-    //I honestly have no idea what exactly did you want here
+
+    
+
 }
 
-void solve2(Point D , Point R)
+void solve2(Point D , Point R , bool NoObstacle )
 {
 
-  //The shortest way if there is no obstacles to move diagonally if it possible 
-  // in order to move diagonally the robot and pickup/Goal
-  // must be in (x,x) and (y,y) vertices
-
-  if (R.row == R.col && D.row == D.col)
+  /*
+  The shortest way if there is no obstacles to move diagonally if it possible 
+  to move diagonally R/P/G must be like (x,x) and (y,y) vertices
+  */
+ 
+ // This will move diagnoally if possible at any time 
+  if (R.row == R.col && D.row == D.col )
   {
     if (R.row > D.row )
     {
@@ -46,12 +50,12 @@ void solve2(Point D , Point R)
     }
 
   }
+  else
+  {
+    moveRobot(1,0);
+  }
 
-
-  //The 2nd shortest way is manhattan way 
-
-
-  //Find 
+  //Diagonal isn't an option 
 
     printMaze();
 }
@@ -92,7 +96,6 @@ void solve()
   {
     solve2(P,R);
   }
-  moveRobot(5,5);
 }
 
 
