@@ -32,12 +32,11 @@ void solve2(Point D , Point R )
 
   /*
   The shortest way if there is no obstacles to move diagonally if it possible 
-  to move diagonally R/P/G must be like (x,x) and (y,y) vertices
+  //to move diagonally R/P/G must be like (x,x) and (y,y) vertices
   */
  
  // This will move diagnoally if possible at any time 
-  if (R.row == R.col && D.row == D.col )
-  {
+
     if (R.row > D.row )
     {
         if(isWalkable(-1,-1))
@@ -53,7 +52,7 @@ void solve2(Point D , Point R )
         }
     }
 
-  }
+  
  
 
   //Diagonal isn't an option 
