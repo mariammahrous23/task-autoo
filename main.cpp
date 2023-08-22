@@ -23,7 +23,7 @@ void initialize()
 
 }
 
-void solve2(Point D , Point R , bool NoObstacle )
+void solve2(Point D , Point R )
 {
 
   /*
