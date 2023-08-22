@@ -44,11 +44,11 @@ void solve2(Point D , Point R )
             moveRobot(-1,-1);
         }
         //ideally moving towards the goal is best
-        else(isWalkable(-1,0))
+        else if (isWalkable(-1,0))
         {
             moveRobot(-1,0);
         }
-        else(isWalkable(0,-1))
+        else if(isWalkable(0,-1))
         {
             moveRobot(0,-1);
         }
@@ -60,11 +60,11 @@ void solve2(Point D , Point R )
             moveRobot(1,1);
         }
         //ideally moving towards the goal is best
-        else(isWalkable(1,0))
+        else if (isWalkable(1,0))
         {
             moveRobot(1,0);
         }
-        else(isWalkable(0,1))
+        else if (isWalkable(0,1))
         {
             moveRobot(0,1);
         }
@@ -76,11 +76,11 @@ void solve2(Point D , Point R )
             moveRobot(1,-1);
         }
         //ideally moving towards the goal is best
-        else(isWalkable(1,0))
+        else if(isWalkable(1,0))
         {
             moveRobot(1,0);
         }
-        else(isWalkable(0,-1))
+        else if (isWalkable(0,-1))
         {
             moveRobot(0,-1);
         }
@@ -92,11 +92,11 @@ void solve2(Point D , Point R )
             moveRobot(-1,1);
         }
         //ideally moving towards the goal is best (no idea which moves is best)
-        else(isWalkable(-1,0))
+        else if(isWalkable(-1,0))
         {
             moveRobot(-1,0);
         }
-        else(isWalkable(0,1))
+        else if (isWalkable(0,1))
         {
             moveRobot(0,1);
         }
