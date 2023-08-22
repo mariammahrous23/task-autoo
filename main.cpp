@@ -105,15 +105,15 @@ int main(int argc, char const *argv[])
     initialize();
 
     // Game loop
-// while (true)
-for (int i=0 ; i< 4 ; i++)
+ while (true)
+//for (int i=0 ; i< 4 ; i++)
     {
         // Check reached goal
         if (hasReachedGoal())
         {
             // Hurray!
             cout << "Reached Goal!" << endl;
-           // break;
+            break;
         }
 
         // Solve maze
