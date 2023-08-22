@@ -21,6 +21,41 @@ void initialize()
     //I honestly have no idea what exactly did you want here
 }
 
+void solve2(Point D)
+{
+
+  //The shortest way if there is no obstacles to move diagonally if it possible 
+  // in order to move diagonally the robot and pickup/Goal
+  // must be in (x,x) and (y,y) vertices
+
+  if (R.row == R.col && D.row == D.col)
+  {
+    if (R.row > D.row )
+    {
+        if(isWalkable(-1,-1))
+        {
+            moveRobot(-1,-1);
+        }
+    }
+    else if (R.row < D.row )
+    {
+        if(isWalkable(1,1))
+        {
+            moveRobot(1,1);
+        }
+    }
+
+  }
+
+
+  //The 2nd shortest way is manhattan way 
+
+
+  //Find 
+
+    printMaze();
+}
+
 void solve()
 {
     /*
@@ -60,40 +95,7 @@ void solve()
   moveRobot(5,5);
 }
 
-void solve2(Point D)
-{
 
-  //The shortest way if there is no obstacles to move diagonally if it possible 
-  // in order to move diagonally the robot and pickup/Goal
-  // must be in (x,x) and (y,y) vertices
-
-  if (R.row == R.col && D.row == D.col)
-  {
-    if (R.row > D.row )
-    {
-        if(isWalkable(-1,-1))
-        {
-            moveRobot(-1,-1);
-        }
-    }
-    else if (R.row < D.row )
-    {
-        if(isWalkable(1,1))
-        {
-            moveRobot(1,1);
-        }
-    }
-
-  }
-
-
-  //The 2nd shortest way is manhattan way 
-
-
-  //Find 
-
-    printMaze();
-}
 
 int main(int argc, char const *argv[])
 {
