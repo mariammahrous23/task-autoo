@@ -16,9 +16,7 @@ main.exe warehouse1.txt
 //GLOBAL VARIABLES 
 //CHECK IF THIS CAN BE DONE
 bool Pfound = false;
-
-
-
+bool Gfound = false;
 
 
 void initialize()
@@ -105,6 +103,10 @@ void solve()
     solve2(G,R);
     Pfound = true ;
   }
+  else if (R.row == G.row && R.col == G.col)
+  {
+    Gfound = true;
+  }
   else if (Pfound)
   {
     solve2(G,R);
@@ -127,7 +129,14 @@ int main(int argc, char const *argv[])
     while (true)
     {
         // Check reached goal
-        if (hasReachedGoal())
+        if (hasReachedGoal()) //Doesn't seem to be working
+        {
+            // Hurray!
+            cout << "Reached Goal!" << endl;
+            break;
+        }
+
+        if (Gfound) 
         {
             // Hurray!
             cout << "Reached Goal!" << endl;
