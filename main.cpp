@@ -129,8 +129,8 @@ void solve()
 struct ComparePositions {
     bool operator()(const Point& a, const Point& b) const {
         // Calculate Manhattan distances
-        int distanceA = abs(a.x - goalPos.x) + abs(a.y - goalPos.y);
-        int distanceB = abs(b.x - goalPos.x) + abs(b.y - goalPos.y);
+        int distanceA = abs(a.row - goalPos.row) + abs(a.col - goalPos.col);
+        int distanceB = abs(b.row - goalPos.row) + abs(b.col - goalPos.col);
 
         // Higher priority means lower distance
         return distanceA > distanceB;
@@ -151,16 +151,18 @@ void solve3()
     pq.push(robotPos);
     parent[robotPos] = robotPos;
 
+    Point R = getRobotPos();    
+    Point G =getGoalPos();
     while (!pq.empty()) {
         Point current = pq.top();
         pq.pop();
 
-        if (current == goalPos) {
+        if (current.row == G.row && current.col == G.col) {
             // Path found, backtrack to move robot
-            while (current != robotPos) {
+            while (!(current.row == R.row && current.col == R.col)) {
                 Point prev = parent[current];
-                int moveRight = prev.x - current.x;
-                int moveDown = prev.y - current.y;
+                int moveRight = prev.row - current.row;
+                int moveDown = prev.col - current.col;
                 moveRobot(moveRight, moveDown);
                 current = prev;
             }
@@ -171,7 +173,7 @@ void solve3()
         for (int moveRight = -1; moveRight <= 1; ++moveRight) {
             for (int moveDown = -1; moveDown <= 1; ++moveDown) {
                 if (isWalkable(moveRight, moveDown)) {
-                    Point next = {current.x + moveRight, current.y + moveDown};
+                    Point next = {current.row + moveRight, current.col + moveDown};
                     if (parent.find(next) == parent.end()) {
                         parent[next] = current;
                         pq.push(next);
