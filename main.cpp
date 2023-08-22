@@ -116,7 +116,6 @@ void solve()
 }
 
 
-
 int main(int argc, char const *argv[])
 {
     // Initalize level
@@ -125,8 +124,7 @@ int main(int argc, char const *argv[])
     initialize();
 
     // Game loop
- while (true)
-//for (int i=0 ; i< 16 ; i++)
+    while (true)
     {
         // Check reached goal
         if (hasReachedGoal())
