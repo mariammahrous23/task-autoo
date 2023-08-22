@@ -32,6 +32,16 @@ void solve2(Point D , Point R )
   */
  
  // This will move diagnoally if possible at any time 
+
+
+
+ //DEBUG 
+ if (D.row == getGoalPos().row && D.col == getGoalPos().col )
+ {
+    cout <<endl;
+    cout<<"row"<<D.row<<endl;
+    cout<<"col"<<D.col<<endl;
+ }
   if (R.row == R.col && D.row == D.col )
   {
     if (R.row > D.row )
@@ -86,7 +96,7 @@ void solve()
   //For debugging purposes 
   if (R.row == P.row && R.col == P.col)
   {
-    cout << "YOU REACHED PICKUP";
+    //cout << "YOU REACHED PICKUP";
     solve2(G,R);
   }
   else 
@@ -105,15 +115,15 @@ int main(int argc, char const *argv[])
     initialize();
 
     // Game loop
- while (true)
-//for (int i=0 ; i< 4 ; i++)
+// while (true)
+for (int i=0 ; i< 4 ; i++)
     {
         // Check reached goal
         if (hasReachedGoal())
         {
             // Hurray!
             cout << "Reached Goal!" << endl;
-            break;
+            //break;
         }
 
         // Solve maze
