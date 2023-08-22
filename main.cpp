@@ -87,7 +87,7 @@ void solve()
         printAround(): prints part of warehouse around robot
     */
 
-
+ initialize(); // Call the initialize function
   Point R = getRobotPos();
   Point P =getItemPos();
   Point G =getGoalPos();
