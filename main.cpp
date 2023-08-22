@@ -121,6 +121,59 @@ void solve()
     solve2(P,R);
   }
 }
+void solve3()
+{
+  
+    std::set<Position> visitedCells; // Keep track of visited cells
+   
+        // Get robot and goal positions
+        Position robotPos = getRobotPos();
+        Position goalPos = getGoalPos();
+        Position itemPos = getItemPos();
+
+
+        // If the robot is not at the item position, move towards the item
+        if (robotPos != itemPos) {
+            // Calculate the direction to move towards the item
+            int moveRight = (itemPos.x > robotPos.x) ? 1 : ((itemPos.x < robotPos.x) ? -1 : 0);
+            int moveDown = (itemPos.y > robotPos.y) ? 1 : ((itemPos.y < robotPos.y) ? -1 : 0);
+
+            // Check if the target cell is walkable and not visited
+            if (isWalkable(moveRight, moveDown) && visitedCells.find({robotPos.x + moveRight, robotPos.y + moveDown}) == visitedCells.end()) {
+                moveRobot(moveRight, moveDown);
+            } else {
+                // Handle case where target cell isn't walkable or visited
+                // Implement backtracking:
+                // Move back to the previous cell (undo the last move)
+                moveRobot(-moveRight, -moveDown);
+            }
+        }
+        // If the robot is at the item position, pick up the item and move towards the goal
+        else {
+            // Calculate the direction to move towards the goal
+            int moveRight = (goalPos.x > robotPos.x) ? 1 : ((goalPos.x < robotPos.x) ? -1 : 0);
+            int moveDown = (goalPos.y > robotPos.y) ? 1 : ((goalPos.y < robotPos.y) ? -1 : 0);
+
+            // Check if the target cell is walkable and not visited
+            if (isWalkable(moveRight, moveDown) && visitedCells.find({robotPos.x + moveRight, robotPos.y + moveDown}) == visitedCells.end()) {
+                // Pick up the item (assuming there's a function for this)
+                pickUpItem();
+
+                // Move towards the goal
+                moveRobot(moveRight, moveDown);
+            } else {
+                // Move back to the previous cell (undo the last move)
+                moveRobot(-moveRight, -moveDown);
+            }
+        }
+
+        // Mark the current cell as visited
+        visitedCells.insert(robotPos);
+        printMaze();
+    }
+
+
+
 
 
 int main(int argc, char const *argv[])
@@ -149,7 +202,7 @@ int main(int argc, char const *argv[])
         }
 
         // Solve maze
-        solve();
+        solve3();
     }
 
     return 0;
