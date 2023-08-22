@@ -37,16 +37,30 @@ void solve2(Point D , Point R )
  
  // This will move diagnoally if possible at any time 
 
-    if (R.row > D.row )
+    if (R.row > D.row && R.col > D.col )
     {
         if(isWalkable(-1,-1))
         {
             moveRobot(-1,-1);
         }
     }
-    else if (R.row < D.row )
+    else if (R.row < D.row && R.col < D.col )
     {
         if(isWalkable(1,1))
+        {
+            moveRobot(1,1);
+        }
+    }
+    else if (R.row > D.row && R.col < D.col )
+    {
+        if(isWalkable(1,-1))
+        {
+            moveRobot(1,-1);
+        }
+    }
+    else if (R.row < D.row && R.col > D.col )
+    {
+        if(isWalkable(-1,1))
         {
             moveRobot(1,1);
         }
