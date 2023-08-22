@@ -101,6 +101,7 @@ void solve()
   {
     cout << "YOU REACHED PICKUP";
     solve2(G,R);
+    Point R = getRobotPos();
     P=R;
   }
   else 
