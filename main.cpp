@@ -50,10 +50,7 @@ void solve2(Point D , Point R , bool NoObstacle )
     }
 
   }
-  else
-  {
-    moveRobot(1,0);
-  }
+ 
 
   //Diagonal isn't an option 
 
