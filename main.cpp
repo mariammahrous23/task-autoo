@@ -24,7 +24,7 @@ void initialize()
     /*
     This function will run after the warehouse is loaded.
     */
-    
+
     // GRID NODES
     // 2D ARRAY / MAP
     // open list (kol hagat hawlena mro7nlha4)
@@ -98,6 +98,7 @@ int main(int argc, char const *argv[])
     initialize();
 
     // Game loop
+    cout <<__privates::robotPos.row;
     while (true)
     {
         // Check reached goal
