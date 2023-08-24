@@ -51,18 +51,28 @@ void removecurrent (Node * openlist[] , int &actualsize, Node * current)
     }
 }
 
-bool isInClosed(Node* closed[], Node* neighbour, int actualclosedsize)
+bool isInClosed(Node* closedlist[], Node* neighbour, int actualclosedsize)
 {
     for(int i=0; i<actualclosedsize; i++)
     {
-        if (closed[i]->x == neighbour->x && closed[i]->y == neighbour->y)
+        if (closedlist[i]->x == neighbour->x && closedlist[i]->y == neighbour->y)
         {
             return true;
         }
     }
     return false;
 }
-
+bool isInOpen(Node* openlist[], Node* neighbour, int actualopensize)
+{
+    for(int i=0; i<actualopensize; i++)
+    {
+        if (openlist[i]->x == neighbour->x && openlist[i]->y == neighbour->y)
+        {
+            return true;
+        }
+    }
+    return false;
+}
 
 
 
@@ -108,7 +118,8 @@ void solve()
     Point R = getRobotPos();
     Node * current = &Grid [R.row][ R.col];
     openlist[0] = current;
-
+    Node start (R.row , R.col , true);
+    Node * startptr = &start;
 
     // closed list  (kol el ro7nlo)
     Node * closedlist [121];
@@ -117,6 +128,8 @@ void solve()
 
     bool goalnotyetfound = true;
     Point G = getGoalPos(); 
+    Node Goal (G.row , G.col , true);
+    Node * Goalptr = &start;
 
     //Algorthim
     while (goalnotyetfound)
@@ -132,8 +145,16 @@ void solve()
             { 
                 int r = current->x - [i];
                 int c = current->y - [j];
-                if ( !Grid[r][c].walkable || isInClosed(closedlist , &Grid[r][c] ,actualclosedsize )  )
-                Grid[r][c];
+                Node * neighbour = & Grid[r][c].walkable;
+                if ( !neighbour->walkable || isInClosed(closedlist , neighbour ,actualclosedsize )  )
+                {
+                    countine; 
+                }
+                else if (!isInOpen)
+                {
+                    neighbour->calculateFCost(startptr,Goalptr);
+                    
+                }
             }
         }
 
