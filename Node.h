@@ -4,7 +4,7 @@
 
 class Node {
 public:
-    int row;          // X (row) coordinate of the node on the grid
+    int x;          // X (row) coordinate of the node on the grid
     int y;          // Y (col) coordinate of the node on the grid
     bool walkable;  // Whether the node is an walkable or not
 
