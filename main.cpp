@@ -44,6 +44,9 @@ void solve()
 
 int main(int argc, char const *argv[])
 {
+    cout << "mimo is here";
+        cout <<__privates::robotPos.row;
+
     // Initalize level
     initMaze(argv[1]);
 
