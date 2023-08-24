@@ -35,7 +35,7 @@ void initialize()
         for (int col = 0; col < MS; col++)
         {
             if (__privates::robotPos.row == row && __privates::robotPos.col == col)
-                matrix[row][col] = ''>'' ;
+                matrix[row][col] = '>' ;
             else if (__privates::goalPos.row == row && __privates::goalPos.col == col)
                 matrix[row][col] = 'D' ;
             else if (__privates::pickupPos.row == row && __privates::pickupPos.col == col && !__privates::hasItem)
