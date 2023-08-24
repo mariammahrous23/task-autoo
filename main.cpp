@@ -18,58 +18,18 @@ main.exe warehouse1.txt
 bool Pfound = false;
 bool Gfound = false;
 
-
-
+void initialize()
+{
+    /*
+    This function will run after the warehouse is loaded.
+    */
+}
 
 void solve2(Point D , Point R )
 {
-
-  /*
-  The shortest way if there is no obstacles to move diagonally if it possible 
-  //to move diagonally R/P/G must be like (x,x) and (y,y) vertices
-  */
- 
- // This will move diagnoally if possible at any time 
-
-    if (R.row > D.row && R.col > D.col && isWalkable(-1,-1) )
-    {
-        moveRobot(-1,-1);
-    }
-    else if (R.row < D.row && R.col < D.col && isWalkable(1,1))
-    {
-        moveRobot(1,1);
-    }
-    else if (R.row > D.row && R.col < D.col && isWalkable(1,-1) )
-    {
-        moveRobot(1,-1);
-    }
-    else if (R.row < D.row && R.col > D.col && isWalkable(-1,1))
-    {  
-        moveRobot(-1,1);
-    }
-       
-
-  //Diagonal isn't an option 
-   else if (R.row == D.row && R.col > D.col && isWalkable(-1,0) )
-    {
-        moveRobot(-1,0);
-    }
-    else if (R.row == D.row && R.col < D.col && isWalkable(1,0))
-    {
-        moveRobot(1,0);
-    }
-    else if (R.row > D.row && R.col == D.col && isWalkable(0,-1))
-    {
-        
-        moveRobot(0,-1);
-    }
-    else if (R.row < D.row && R.col == D.col && isWalkable(0,1) )
-    {
-        moveRobot(0,1);
-    }
-
-    printMaze();
-    cout<<endl;
+    /* Because we won't repeat the same code twice
+    It should take current robot position and Destantion (Pickup or Goal)
+    */
 }
 
 void solve()
@@ -115,16 +75,6 @@ void solve()
     solve2(P,R);
   }
 }
-
-void initialize()
-{
-    /*
-    This function will run after the warehouse is loaded.
-    */
-}
-
-
-
 
 
 int main(int argc, char const *argv[])
