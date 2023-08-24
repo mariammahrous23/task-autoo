@@ -74,6 +74,32 @@ void solve()
   {
     solve2(P,R);
   }
+
+
+  /// Testing if map is avaliable here cause it would change everything
+   for (int row = 0; row < __privates::mapSize; row++)
+    {
+        for (int col = 0; col < __privates::mapSize; col++)
+        {
+            if (__privates::robotPos.row == row && __privates::robotPos.col == col)
+            {
+                cout << ">";
+            }
+            else if (__privates::goalPos.row == row && __privates::goalPos.col == col)
+            {
+                cout << "D";
+            }
+            else if (__privates::pickupPos.row == row && __privates::pickupPos.col == col && !__privates::hasItem)
+            {
+                cout << "P";
+            }
+            else
+            {
+                cout << (__privates::map[row][col] ? "." : "#");
+            }
+        }
+        cout << endl;
+    }
 }
 
 
