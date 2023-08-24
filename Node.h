@@ -3,8 +3,8 @@
 #include <cmath>
 
 class Node {
-private:
-    int x;          // X (row) coordinate of the node on the grid
+public:
+    int row;          // X (row) coordinate of the node on the grid
     int y;          // Y (col) coordinate of the node on the grid
     bool walkable;  // Whether the node is an walkable or not
 
@@ -15,10 +15,10 @@ private:
 
     Node* parent;   // Parent node in the path
 
-public:
+
     // Constructor
-    Node(int x, int y, bool obstacle = false)
-        : x(x), y(y), walkable(walkable), gCost(0), hCost(0), fCost(0), parent(nullptr) {
+    Node(int x=0, int y=0, bool walkable = true)
+        : x(x), y(y), walkable(walkable), gCost(0), hCost(0), fCost(100), parent(nullptr) {
     }
 
     // set parent
