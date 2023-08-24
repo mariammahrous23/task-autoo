@@ -12,33 +12,11 @@ main.exe warehouse1.txt
 */
 
 #include "warehouse.h"
-#include "Node.h"
-
-//GLOBAL VARIABLES 
-//CHECK IF THIS CAN BE DONE
-bool Pfound = false;
-bool Gfound = false;
 
 void initialize()
 {
     /*
     This function will run after the warehouse is loaded.
-    */
-
-    // GRID NODES
-    // 2D ARRAY / MAP
-    // open list (kol hagat hawlena mro7nlha4)
-    // closed list  (kol el ro7nlo)
-    // save path bl stack (nrg3 bl parent recursion ba) 
-    // pop  when movement 
-    // when pushing relative position (ndyha ll move robot)
-
-}
-
-void solve2(Point D , Point R )
-{
-    /* Because we won't repeat the same code twice
-    It should take current robot position and Destantion (Pickup or Goal)
     */
 }
 
@@ -62,33 +40,7 @@ void solve()
         printMaze()  : prints warehouse as a whole
         printAround(): prints part of warehouse around robot
     */
-
-  Point R = getRobotPos();
-  Point P =getItemPos();
-  Point G =getGoalPos();
-
-  if (R.row == P.row && R.col == P.col)
-  {
-    solve2(G,R);
-    Pfound = true ;
-  }
-  else if (R.row == G.row && R.col == G.col)
-  {
-    Gfound = true;
-  }
-  else if (Pfound)
-  {
-    solve2(G,R);
-  }
-  else 
-  {
-    solve2(P,R);
-  }
-
-
-   
 }
-
 
 int main(int argc, char const *argv[])
 {
@@ -99,22 +51,15 @@ int main(int argc, char const *argv[])
 
     // Game loop
     cout << "mimo is here";
-    cout <<__privates::robotPos.row;
+
     while (true)
     {
         // Check reached goal
-        if (hasReachedGoal()) //Doesn't seem to be working
+        if (hasReachedGoal())
         {
             // Hurray!
             cout << "Reached Goal!" << endl;
             break;
-        }
-
-        if (Gfound) 
-        {
-            // Hurray!
-            cout << "Reached Goal!" << endl;
-           break;
         }
 
         // Solve maze
