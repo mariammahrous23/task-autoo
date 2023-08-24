@@ -24,6 +24,15 @@ void initialize()
     /*
     This function will run after the warehouse is loaded.
     */
+    
+    // GRID NODES
+    // 2D ARRAY / MAP
+    // open list (kol hagat hawlena mro7nlha4)
+    // closed list  (kol el ro7nlo)
+    // save path bl stack (nrg3 bl parent recursion ba) 
+    // pop  when movement 
+    // when pushing relative position (ndyha ll move robot)
+
 }
 
 void solve2(Point D , Point R )
