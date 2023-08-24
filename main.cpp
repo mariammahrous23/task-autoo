@@ -49,7 +49,11 @@ int main(int argc, char const *argv[])
     initMaze(argv[1]);
 
     initialize();
+    cout << endl;
     cout << " mimo is here ";
+    cout << endl;
+    cout <<__privates::robotPos.row;
+    cout << endl;
     printMaze();
     cout << endl;
     cout << " mimo is here ";
