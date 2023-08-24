@@ -50,7 +50,7 @@ int main(int argc, char const *argv[])
 
     initialize();
     printMaze();
-
+    cout << "mimo is here";
     // Game loop
     while (true)
     {
