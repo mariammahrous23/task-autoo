@@ -12,10 +12,6 @@ main.exe warehouse1.txt
 */
 
 #include "warehouse.h"
-#include <queue>
-#include <vector>
-#include <map>
-#include <climits>
 
 //GLOBAL VARIABLES 
 //CHECK IF THIS CAN BE DONE
@@ -23,13 +19,7 @@ bool Pfound = false;
 bool Gfound = false;
 
 
-void initialize()
-{
-    /*
-    This function will run after the warehouse is loaded.
-    */
-    // Honestly have no idea what to do here
-}
+
 
 void solve2(Point D , Point R )
 {
@@ -126,63 +116,15 @@ void solve()
   }
 }
 
-struct ComparePositions {
-    bool operator()(const Point& a, const Point& b) const {
-        // Calculate Manhattan distances
-        Point goalPos = getGoalPos();
-        int distanceA = abs(a.row - goalPos.row) + abs(a.col - goalPos.col);
-        int distanceB = abs(b.row - goalPos.row) + abs(b.col - goalPos.col);
-
-        // Higher priority means lower distance
-        return distanceA > distanceB;
-    }
-};
-
-
-
-
-void solve3()
+void initialize()
 {
-    Point robotPos = getRobotPos();
-    Point goalPos = getGoalPos();
-    
-    std::priority_queue<Point, std::vector<Point>, ComparePositions> pq;
-    std::map<Point, Point> parent;
-
-    pq.push(robotPos);
-    parent[robotPos] = robotPos;
-
-   
-    while (!pq.empty()) {
-        Point current = pq.top();
-        pq.pop();
-
-        if (current.row == goalPos.row && current.col == goalPos.col) {
-            // Path found, backtrack to move robot
-            while (!(current.row == robotPos.row && current.col == robotPos.col)) {
-                Point prev = parent[current];
-                int moveRight = prev.row - current.row;
-                int moveDown = prev.col - current.col;
-                moveRobot(moveRight, moveDown);
-                current = prev;
-            }
-            break;
-        }
-
-        // Expand neighbors and add to queue
-        for (int moveRight = -1; moveRight <= 1; ++moveRight) {
-            for (int moveDown = -1; moveDown <= 1; ++moveDown) {
-                if (isWalkable(moveRight, moveDown)) {
-                    Point next = {current.row + moveRight, current.col + moveDown};
-                    if (parent.find(next) == parent.end()) {
-                        parent[next] = current;
-                        pq.push(next);
-                    }
-                }
-            }
-        }
-    }
+    /*
+    This function will run after the warehouse is loaded.
+    */
 }
+
+
+
 
 
 int main(int argc, char const *argv[])
@@ -211,7 +153,7 @@ int main(int argc, char const *argv[])
         }
 
         // Solve maze
-        solve3();
+        solve();
     }
 
     return 0;
