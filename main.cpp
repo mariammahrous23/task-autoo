@@ -12,8 +12,7 @@ main.exe warehouse1.txt
 */
 
 #include "warehouse.h"
-#include <vector>
-
+#include "Node.h"
 
 //GLOBAL VARIABLES 
 //CHECK IF THIS CAN BE DONE
@@ -25,32 +24,6 @@ void initialize()
     /*
     This function will run after the warehouse is loaded.
     */
-
-    //Creating the map in 2D MATRIX
-    int MS = __privates::mapSize; // MS for matrix size
-    std::vector<std::vector<char>> matrix(MS, std::vector<char>(MS));
-
-    for (int row = 0; row < MS; row++)
-    {
-        for (int col = 0; col < MS; col++)
-        {
-            if (__privates::robotPos.row == row && __privates::robotPos.col == col)
-                matrix[row][col] = '>' ;
-            else if (__privates::goalPos.row == row && __privates::goalPos.col == col)
-                matrix[row][col] = 'D' ;
-            else if (__privates::pickupPos.row == row && __privates::pickupPos.col == col && !__privates::hasItem)
-                matrix[row][col] = 'P' ;
-            else
-                 matrix[row][col] = (__privates::map[row][col] ? '.' : '#');
-        }
-    }
-       for (int row = 0; row < MS; row++)
-    {
-        for (int col = 0; col < MS; col++)
-        {
-            cout << matrix [row][col];
-        }
-    }
 }
 
 void solve2(Point D , Point R )
