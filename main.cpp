@@ -22,9 +22,9 @@ void initialize()
     */
 }
 
-Node * MinOpenNode (Node * openlist[] ,actualsize )
+Node * MinOpenNode (Node * openlist[] , int actualsize )
 {
-    int min = 99999999999999;
+    int min = 276447231;
     Node * tempmin;
     for (int i = 0 ; i < actualsize ; i++)
     {
@@ -41,7 +41,7 @@ void removecurrent (Node * openlist[] , int &actualsize, Node * current)
 {
      for (int i = 0 ; i < actualsize ; i++)
     {
-        if (current.x == openlist[i].x && current.y == openlist[i].y)
+        if (current->x == openlist[i]->x && current->y == openlist[i]->y)
         {
             actualsize--;
             openlist[i] = openlist[actualsize];
@@ -98,7 +98,7 @@ void solve()
     */
 
     // 2D ARRAY / MAP
-     Node  Gird [11][11];
+     Node  Grid [11][11];
       for (int row = 0; row < 11; row++)
         {
             for (int col = 0; col < 11; col++)
@@ -143,17 +143,17 @@ void solve()
         {
            for (int j = -1 ; i <= 1 ; i++)
             { 
-                int r = current->x - [i];
-                int c = current->y - [j];
+                int r = (current->x) - [i];
+                int c = (current->y) - [j];
                 Node * neighbour = & Grid[r][c].walkable;
                 if ( !neighbour->walkable || isInClosed(closedlist , neighbour ,actualclosedsize )  )
                 {
-                    countine; 
+                    //ABS NOTHING
                 }
                 else if (!isInOpen)
                 {
                     neighbour->calculateFCost(startptr,Goalptr);
-                    
+
                 }
             }
         }
