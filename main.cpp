@@ -18,6 +18,7 @@ void initialize()
     /*
     This function will run after the warehouse is loaded.
     */
+    
 }
 
 void solve()
@@ -44,14 +45,13 @@ void solve()
 
 int main(int argc, char const *argv[])
 {
-    cout << "mimo is here";
     // Initalize level
     initMaze(argv[1]);
 
     initialize();
+    printMaze();
 
     // Game loop
-    cout << "mimo is here";
     while (true)
     {
         // Check reached goal
