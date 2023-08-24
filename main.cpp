@@ -143,9 +143,9 @@ void solve()
         {
            for (int j = -1 ; i <= 1 ; i++)
             { 
-                int r = (current->x) - [i];
-                int c = (current->y) - [j];
-                Node * neighbour = & Grid[r][c].walkable;
+                int r = (current->x) - i;
+                int c = (current->y) - j;
+                Node * neighbour = & Grid[r][c];
                 if ( !neighbour->walkable || isInClosed(closedlist , neighbour ,actualclosedsize )  )
                 {
                     //ABS NOTHING
@@ -158,7 +158,7 @@ void solve()
             }
         }
 
-        if (current.x == G.row && current.y == G.col)
+        if (current->x == G.row && current->y == G.col)
         {
             goalnotyetfound=false;
             break;
