@@ -56,7 +56,7 @@ int main(int argc, char const *argv[])
     cout << endl;
     printMaze();
     cout << endl;
-    cout << " mimo is here ";
+    cout << " mimo is here " << endl;
     // Game loop
     while (true)
     {
