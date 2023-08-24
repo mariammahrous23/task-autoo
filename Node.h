@@ -3,7 +3,7 @@
 #include <cmath>
 
 class Node {
-public:
+Private:
     int x;          // X (row) coordinate of the node on the grid
     int y;          // Y (col) coordinate of the node on the grid
     bool walkable;  // Whether the node is an walkable or not
@@ -15,6 +15,7 @@ public:
 
     Node* parent;   // Parent node in the path
 
+Public:
     // Constructor
     Node(int x, int y, bool obstacle = false)
         : x(x), y(y), walkable(walkable), gCost(0), hCost(0), fCost(0), parent(nullptr) {
@@ -26,7 +27,7 @@ public:
     }
 
     //Get parent 
-     Node* setParent() {
+     Node* GetParent() {
         return parent ;
     }
 
