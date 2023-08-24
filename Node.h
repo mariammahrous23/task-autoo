@@ -35,7 +35,7 @@ public:
     int row = std::abs(x - startNode->x);
     int col = std::abs(y - startNode->y);
     gCost = row + col; 
-    return gcost;
+    return gCost;
     }   
 
     // Calculate Hcost in manhttan way but prefer diagonal movements
@@ -43,7 +43,7 @@ public:
     int row = std::abs(x - goalNode->x);
     int col = std::abs(y - goalNode->y);
     hCost = row + col ;
-    return hcost;
+    return hCost;
     }
 
     double calculateFCost( Node* startNode , Node* goalNode ) {
