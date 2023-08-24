@@ -51,7 +51,7 @@ int main(int argc, char const *argv[])
 
     // Game loop
     cout << "mimo is here";
-
+    cout <<__privates::robotPos.row;
     while (true)
     {
         // Check reached goal
