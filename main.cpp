@@ -98,6 +98,7 @@ int main(int argc, char const *argv[])
     initialize();
 
     // Game loop
+    cout << "mimo is here";
     cout <<__privates::robotPos.row;
     while (true)
     {
