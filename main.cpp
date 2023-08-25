@@ -175,9 +175,13 @@ void solve()
     Node * pickptr = &pickup;
     Node goal(getGoalPos().col, getGoalPos().row,true);
     Node* goalptr = &goal;
+    cout <<"abl go to pickup"<<endl;
     goTo(pickptr);
+    cout <<"b3d go to pickup"<<endl;
     bool p = pickItem();
+    cout <<"abl go to goal"<<endl;
     goTo(goalptr);
+    cout <<"b3d go to goal"<<endl;
 
     /*
     This function will keep running forever until the goal is reached.
