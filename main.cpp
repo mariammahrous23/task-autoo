@@ -146,6 +146,7 @@ void solve()
     //Algorthim
     while (goalnotyetfound)
     {
+        cout << "inside algo" << endl;
         current = MinOpenNode(openlist,actualopensize);
         removecurrent(openlist,actualopensize,current);
         closedlist[actualclosedsize]=current;
@@ -176,7 +177,7 @@ void solve()
         // save path bl stack (nrg3 bl parent) 
         if (current->x == G.row && current->y == G.col && true)
         {
-            cout << " ana hena"
+            cout << " ana hena" <<endl;
             goalnotyetfound=false;
             path.push(current); //The goal 
             while (current->parent) 
@@ -184,6 +185,7 @@ void solve()
                 path.push(current->parent) ; 
                 current = current->parent ; 
             } 
+            cout << "path found"<<endl;
             break;
         }
     }
@@ -191,6 +193,7 @@ void solve()
     // when pushing relative position (ndyha ll move robot)
     if (!path.empty()) 
     { 
+        cout<<'pop awl element';
      Node * move= path.top(); 
      path.pop();
      
