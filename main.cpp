@@ -124,6 +124,8 @@ void goTo (Node * togoptr)
     current->calculateFCost(startptr,togoptr);
     int opensize=1;
     bool reached = (current->x ==togoptr->x) && (current->y == togoptr->y);;
+    cout<<"abl el while"
+    printMaze();
     //Node * MinFcostNode = nullptr; //for comparison with neighbours
     while(!reached)
     {
@@ -151,13 +153,11 @@ void goTo (Node * togoptr)
 
         }
         reached = (current->x ==togoptr->x) && (current->y == togoptr->y);
-        cout<<"abl el generatepath"<<endl;
-        printMaze(); 
+        // print maze byza mn abl hena bardo
        if (reached)
         {
            generatepath(path,current);
-        cout<<"b3d el generatepath"<<endl;
-        printMaze();            break;
+       
         }
     }
     //by the end of this loop, robot has picked up the item and the current = pickup pos
