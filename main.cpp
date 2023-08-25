@@ -93,14 +93,14 @@ void generatepath(stack<Node*> &path, Node*start , Node * togoptr)
 {
      if (start->x == togoptr->x && start->y == togoptr->y )
         {
-            goalnotyetfound=false; //Goal is found
+         
             path.push(start); //The goal 
             while (start->parent) 
             { 
                 path.push(start->parent) ; 
                 start = start->parent ; 
             } 
-            break;
+            
         }
 }
 
