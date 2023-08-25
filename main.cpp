@@ -113,9 +113,12 @@ void Getpath(Node * startptr , Node * Goalptr)
         closedlist[actualclosedsize]=current;
         actualclosedsize++;
 
-        for (int i = -1 ; i <= 1 ; i++)
+        //for (int i = -1 ; i <= 1 ; i++)
+       // {
+          // for (int j = -1 ; j <= 1 ; j++)
+        for(int i= current->x-1; i<=current->x+1; i++)
         {
-           for (int j = -1 ; j <= 1 ; j++)
+            for(int j=current->y-1; j<=current->y+1; j++)
             { 
                 int r = (current->x) - i;
                 int c = (current->y) - j;
