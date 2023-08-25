@@ -4,7 +4,7 @@ the warehouse as a whole from the get-go, you will need to explore the warehouse
 
 You have to include "warehouse.h".
 
-Your code goes in the *initialize* and *solve* functions. Read the instructions there carefully.
+Your code goes in the initialize and solve functions. Read the instructions there carefully.
 
 Compile your code using any c++ compiler and pass level filename as an argument, for example:
 g++ main.cpp -o main.exe
@@ -17,7 +17,7 @@ main.exe warehouse1.txt
 #include <stack>
 
 
-Node nodemap[__privates::mapSize][__privates::mapSize]; 
+Node nodemap[_privates::mapSize][_privates::mapSize]; 
 
 void initialize() 
 {
@@ -108,7 +108,7 @@ void goTo (Node * togoptr)
     Node* startptr = &start;
     Node * closed[121];
     int closedsize =0;
-    Node * current = &nodemap[__privates::robotPos.row][__privates::robotPos.col];
+    Node * current = &nodemap[_privates::robotPos.row][_privates::robotPos.col];
     Node * open[121]; //max size, can be better optimised if linkedlist
     open[0]=current;
     current->calculateFCost(startptr,togoptr);
