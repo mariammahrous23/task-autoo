@@ -170,6 +170,7 @@ void goTo (Node * togoptr)
     path.pop();
     while (!path.empty())
     {
+        printMaze();
         cout<<"gowa tany while" <<endl;
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
@@ -178,7 +179,7 @@ void goTo (Node * togoptr)
         cout<<endl;
         nextmove = path.top();
         path.pop();
-        printMaze();
+    
     }
     cout <<"bra el while"<<endl;
 }
