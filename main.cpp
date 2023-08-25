@@ -231,7 +231,7 @@ int main(int argc, char const *argv[])
         if (hasReachedGoal())
         {
             // Hurray!
-            PrintMaze();
+            printMaze();
             cout << "Reached Goal!" << endl;
             break;
         }
