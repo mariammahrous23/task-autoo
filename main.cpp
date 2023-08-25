@@ -138,7 +138,6 @@ void Getpath(Node * startptr , Node * Goalptr)
         // save path bl stack (nrg3 bl parent) 
         if (current->x == Goalptr->x && current->y == Goalptr->y )
         {
-            cout << " ana hena" <<endl;
             goalnotyetfound=false;
             path.push(current); //The goal 
             while (current->parent) 
@@ -146,7 +145,6 @@ void Getpath(Node * startptr , Node * Goalptr)
                 path.push(current->parent) ; 
                 current = current->parent ; 
             } 
-            cout << "path found"<<endl;
             break;
         }
     }
@@ -157,9 +155,6 @@ void Getpath(Node * startptr , Node * Goalptr)
     { 
      Node * move= path.top(); 
      path.pop();
-     
-     cout << "ana 3yza a move keda aba fy row " << move->x <<endl;
-     cout << "ana 3yza a move keda fy col " << move->y <<endl;
      // Intially right, down movements
      
      // (1) Up and (-1) down movement 
@@ -167,13 +162,11 @@ void Getpath(Node * startptr , Node * Goalptr)
      
      // (1) right and (-1) left movement
      int c = (move->y) - (startptr->y) ; 
-     cout << "ana 3yza a move keda row " << r <<endl;
-     cout << "ana 3yza a move keda col " << c <<endl;
      moveRobot(c,r); 
      printMaze();
        if (pickItem())
         {
-            cout<<"edy ya mimo ya gamda" << endl;
+            //wla haga
         }
 
      
