@@ -141,6 +141,7 @@ void goTo (Node * togoptr)
         }
         cout<<"before picked"<<endl;
         reached = (current->x ==togoptr->x) && (current->y= togoptr->y);
+        cout<<"reached wla la "<<reached <<endl;
         cout<<"after pickup"<<endl;
        if (reached)
         {
