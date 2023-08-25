@@ -152,8 +152,11 @@ void goTo (Node * togoptr)
     //time to move robot by popping the nodes, calculating relative pos, giving it to the robot
     //pop , calc rel pos, move robot, get next, do again
     Node* nextmove = path.pop()->data;
+    cout<<"is there ay ma4kal or no? " <<endl;
     while (nextmove)
     {
+        cout<<"mafya4 ma4kal " <<endl;
+        printMaze();
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
