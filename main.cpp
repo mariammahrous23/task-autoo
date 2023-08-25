@@ -150,9 +150,8 @@ void goTo (Node * togoptr , Node * startptr)
             }
 
         }
-        reached = (current->x ==togoptr->x) && (current->y == togoptr->y);
         // print maze byza mn abl hena bardo
-       if (reached)
+       if ((current->x ==togoptr->x) && (current->y == togoptr->y))
         {
             path.push(current); //The goal 
             while (current->parent) 
@@ -160,6 +159,7 @@ void goTo (Node * togoptr , Node * startptr)
                 path.push(current->parent) ; 
                 current = current->parent ; 
             } 
+            reached=true;
             break;
         }
     }      
