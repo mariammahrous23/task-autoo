@@ -15,10 +15,9 @@ main.exe warehouse1.txt
 #include "Node.h"
 #include <stack>
 
-std::stack<Node*> path;
-//bool firsttime=true;
 
 //FOR now global 
+std::stack<Node*> path;
 
 void initialize()
 {
@@ -29,6 +28,7 @@ void initialize()
 
 Node * MinOpenNode (Node * openlist[] , int actualsize )
 {
+    //Get the node with minumum F cost 
     int min = 276447231;
     Node * tempmin;
     for (int i = 0 ; i < actualsize ; i++)
@@ -44,6 +44,7 @@ Node * MinOpenNode (Node * openlist[] , int actualsize )
 
 void removecurrent (Node * openlist[] , int &actualsize, Node * current)
 {
+    //After the node is processed remove it from Openlist
      for (int i = 0 ; i < actualsize ; i++)
     {
         if (current->x == openlist[i]->x && current->y == openlist[i]->y)
@@ -58,6 +59,7 @@ void removecurrent (Node * openlist[] , int &actualsize, Node * current)
 
 bool isInClosed(Node* closedlist[], Node* neighbour, int actualclosedsize)
 {
+    //Check if node is already in close
     for(int i=0; i<actualclosedsize; i++)
     {
         if (closedlist[i]->x == neighbour->x && closedlist[i]->y == neighbour->y)
@@ -67,8 +69,10 @@ bool isInClosed(Node* closedlist[], Node* neighbour, int actualclosedsize)
     }
     return false;
 }
+
 bool isInOpen(Node* openlist[], Node* neighbour, int actualopensize)
 {
+    //Check if node is already in Open
     for(int i=0; i<actualopensize; i++)
     {
         if (openlist[i]->x == neighbour->x && openlist[i]->y == neighbour->y)
@@ -81,7 +85,7 @@ bool isInOpen(Node* openlist[], Node* neighbour, int actualopensize)
 
 void Getpath(Node * startptr , Node * Goalptr)
 {
-    // 2D ARRAY / MAP
+    // making the 2D map to be able to access 
      Node  Grid [11][11];
       for (int row = 0; row < 11; row++)
         {
@@ -96,23 +100,23 @@ void Getpath(Node * startptr , Node * Goalptr)
     
     // open list (kol hagat hawlena mro7nlha4)
     int actualopensize = 1 ; //because i will automatically add the robot pos
-    Node * openlist [121]; 
+    Node * openlist [121]; //Max no 11*11
     Node * current = &Grid [startptr->x][startptr->y];
     openlist[0] = current;
 
      // closed list  (kol el ro7nlo)
     Node * closedlist [121];
     int actualclosedsize = 0 ;
-    bool goalnotyetfound = true;
+    bool goalnotyetfound = true; // intially nothing is found
     
-     //Algorthim
+    // A* Algorthim
     while (goalnotyetfound)
     {
         current = MinOpenNode(openlist,actualopensize);
         removecurrent(openlist,actualopensize,current);
         closedlist[actualclosedsize]=current;
         actualclosedsize++;
-
+    //Exploring it's neighbours
      for (int i = -1 ; i <= 1 ; i++)
        {
            for (int j = -1 ; j <= 1 ; j++)
@@ -136,10 +140,10 @@ void Getpath(Node * startptr , Node * Goalptr)
         }
 
 
-        // save path bl stack (nrg3 bl parent) 
+        // save path inside the stack (nrg3 bl parent) 
         if (current->x == Goalptr->x && current->y == Goalptr->y )
         {
-            goalnotyetfound=false;
+            goalnotyetfound=false; //Goal is found
             path.push(current); //The goal 
             while (current->parent) 
             { 
@@ -149,28 +153,23 @@ void Getpath(Node * startptr , Node * Goalptr)
             break;
         }
     }
-    // pop  when movement 
-    // when pushing relative position (ndyha ll move robot)
+
+    // pop when movement 
     while (!path.empty()) 
-    //for (int i =0 ; i<9 ; i++)
     { 
      Node * move= path.top(); 
      path.pop();
      // Intially right, down movements
-     
+
      // (1) Up and (-1) down movement 
      int r = (move->x) - (startptr->x) ; 
      
      // (1) right and (-1) left movement
      int c = (move->y) - (startptr->y) ; 
+
      moveRobot(c,r); 
      printMaze();
-       if (pickItem())
-        {
-            //wla haga
-        }
-
-     
+     cout << endl;
     } 
 
 
