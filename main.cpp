@@ -15,7 +15,7 @@ main.exe warehouse1.txt
 #include "Node.h"
 #include <stack>
 
-std::stack<int> myStack;
+std::stack<Node> path;
 
 //FOR now global 
 
@@ -168,27 +168,47 @@ void solve()
             }
         }
 
+        // save path bl stack (nrg3 bl parent) 
         if (current->x == G.row && current->y == G.col)
         {
             goalnotyetfound=false;
+            path.push(current); //The goal 
+            while (current->parent) 
+            { 
+                push (current->parent) ; 
+                current = current->parent ; 
+            } 
             break;
         }
     }
-    
-
-    // save path bl stack (nrg3 bl parent recursion ba) 
-
     // pop  when movement 
     // when pushing relative position (ndyha ll move robot)
+    if (!path.empty()) 
+    { 
+     Node * move= stack.pop; 
+     
+     // Intially right, down movements
+     
+     // (1) Up and (-1) down movement 
+     int r = (move->x) - (R->row) ; 
+     
+     // (1) right and (-1) left movement
+     int c = (move-y) - (R->col) ; 
+     
+     moverobot(r,c); 
+       if (pickItem())
+        {
+            cout<<"edy ya mimo ya gamda" << endl;
+        }
+
+     
+    } 
     
 }
 
 int main(int argc, char const *argv[])
 {
     // Initalize level
-    myStack.push(10);
-    cout<< myStack.top(); 
-    cout<<endl;
     initMaze(argv[1]);
 
     initialize();
