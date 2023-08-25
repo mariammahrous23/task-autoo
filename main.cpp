@@ -113,7 +113,7 @@ void Getpath(Node * startptr , Node * Goalptr)
         closedlist[actualclosedsize]=current;
         actualclosedsize++;
 
-     /*for (int i = -1 ; i <= 1 ; i++)
+     for (int i = -1 ; i <= 1 ; i++)
        {
            for (int j = -1 ; j <= 1 ; j++)
           {
@@ -133,22 +133,8 @@ void Getpath(Node * startptr , Node * Goalptr)
                 }
               
             }
-        }*/
-        for(int i= current->x-1; i<=current->x+1; i++)
-        {
-            for(int j=current->y-1; j<=current->y+1; j++)
-            {
-                Node * neighbour = &Grid[i][j];
-                if(!neighbour->walkable || isInClosed(closedlist,neighbour,actualclosedsize))
-                {continue;}
-                if(!isInOpen(openlist,neighbour,actualopensize))
-                {
-                    neighbour->parent= current;
-                    openlist[actualopensize]=neighbour;
-                    actualopensize ++ ; 
-                }
-            }
         }
+
 
         // save path bl stack (nrg3 bl parent) 
         if (current->x == Goalptr->x && current->y == Goalptr->y )
