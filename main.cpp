@@ -143,6 +143,7 @@ void goTo (Node * togoptr)
         cout<<"after pickup"<<endl;
         cout << endl;
     }
+    cout<<"before comment"<<endl;
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
     //Stack<Node*> path;
