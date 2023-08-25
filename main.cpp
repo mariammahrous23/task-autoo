@@ -144,6 +144,7 @@ void goTo (Node * togoptr)
         cout<<"after pickup"<<endl;
        if (reached)
         {
+            cout << "gowa el if" << endl;
            generatepath(path,current);
            break;
         }
