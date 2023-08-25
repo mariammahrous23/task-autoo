@@ -91,7 +91,6 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
 }
 void generatepath(stack<Node*> &path, Node*start)
 {
-    cout<<"inside generate path"<<endl;
     if(start)
     {
         path.push(start);
@@ -138,44 +137,35 @@ void goTo (Node * togoptr)
                     opensize++;
                 }
             }
-                    cout<<"inside 2nd for "<<endl;
 
         }
-        cout<<"before picked"<<endl;
         reached = (current->x ==togoptr->x) && (current->y == togoptr->y);
-        cout<<"reached wla la "<<reached <<endl;
-        cout<<"after pickup"<<endl;
        if (reached)
         {
-            cout << "gowa el if" << endl;
            generatepath(path,current);
+           cout<<"abl ma atl3 mn awl while" <<endl;
            break;
         }
-        cout << "path generated"<<endl;
     }
-    cout<<"before comment"<<endl;
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
     //Stack<Node*> path;
-    cout<<"First cout abl ma n3mal stack"<<endl;
     //std::stack<Node*> path;
-    cout<<"second cout b3d ma n3mal stack"<<endl;
     //generatepath(path,current);
     //now that the stack contains or nodes to the path
     //time to move robot by popping the nodes, calculating relative pos, giving it to the robot
     //pop , calc rel pos, move robot, get next, do again
-    Node* nextmove = path.top();
+   Node* nextmove = path.top();
     path.pop();
-    cout<<"b3d generate"<<endl;
-    while (nextmove)
+    while (!path.empty())
     {
-        cout<<"tab w hena?" << endl;
+        cout<<"gowa tany while" <<endl;
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
         nextmove = path.top();
         path.pop();
-    } 
+    }
 }
 
 void solve() 
