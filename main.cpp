@@ -113,9 +113,9 @@ void goTo (Node * togoptr)
     open[0]=current;
     current->calculateFCost(startptr,togoptr);
     int opensize=1;
-    bool picked = (current->x ==__privates::pickupPos.col) && (current->y= __privates::pickupPos.row);
+    bool reached = (current->x ==togoptr->x) && (current->y= togoptr->y);;
     //Node * MinFcostNode = nullptr; //for comparison with neighbours
-    while(!picked)
+    while(!reached)
     {
         current = getminfcost(open, opensize);
         removeFromOpen(open,current,opensize);
@@ -140,9 +140,9 @@ void goTo (Node * togoptr)
 
         }
         cout<<"before picked"<<endl;
-        picked = (current->x ==__privates::pickupPos.col) && (current->y= __privates::pickupPos.row);
+        reached = (current->x ==togoptr->x) && (current->y= togoptr->y);
         cout<<"after pickup"<<endl;
-       if (picked)
+       if (reached)
         {
            generatepath(path,current);
         }
