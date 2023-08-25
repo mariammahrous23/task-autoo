@@ -16,7 +16,6 @@ main.exe warehouse1.txt
 #include "Stack.h"
 
 //FOR now global 
-Stack<int> myStack;
 
 void initialize()
 {
@@ -185,6 +184,7 @@ void solve()
 int main(int argc, char const *argv[])
 {
     // Initalize level
+    Stack<int> myStack;
     myStack.push(10);
     cout<< myStack.pop(); 
     cout<<endl;
