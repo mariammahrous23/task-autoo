@@ -138,12 +138,14 @@ void goTo (Node * togoptr)
         //traversing the 8 neighbouring cells of the 'current'
         for(int i=-1; i<=1; i++)
         {
+           
             for(int j=-1; j<=1; j++)
             {
                 int r = (current->x) - i;
                 int c = (current->y) - j;
                 Node * neighbour = & nodemap[r][c];
                 cout<<"b3d el intialization" <<endl;
+                cout << " i then j " << i ,j <<endl;
                 printMaze();
                 if(!neighbour->walkable || isInClosed(closed,neighbour,closedsize))
                 {continue;}
