@@ -101,7 +101,7 @@ void generatepath(stack<Node*> &path, Node*start)
 }
 
 
-void goTo (Node * togoptr)
+void goTo (Node * togoptr , Node * startptr)
 {
      for (int row = 0; row < __privates::mapSize; row++)
     {
@@ -115,8 +115,7 @@ void goTo (Node * togoptr)
 
 
    std::stack<Node*> path;
-    Node start (getRobotPos().col,getRobotPos().row,true);
-    Node* startptr = &start;
+ 
     Node * closed[121];
     int closedsize =0;
     Node * current = &nodemap[__privates::robotPos.row][__privates::robotPos.col];
@@ -196,16 +195,18 @@ void solve()
     Node * pickptr = &pickup;
     Node goal(getGoalPos().col, getGoalPos().row,true);
     Node* goalptr = &goal;
-    goTo(pickptr);
-    int movex= getItemPos().col - getRobotPos().col;
-    int movey= getItemPos().row - getRobotPos().row;
-    moveRobot(movex,movey);
+    Node start (getRobotPos().col,getRobotPos().row,true);
+    Node* startptr = &start;
+    goTo(pickptr, startptr);
+    //int movex= getItemPos().col - getRobotPos().col;
+   // int movey= getItemPos().row - getRobotPos().row;
+   // moveRobot(movex,movey);
     printMaze();
     bool p = pickItem();
-    goTo(goalptr);
-     movex= getGoalPos().col - getRobotPos().col;
-     movey= getGoalPos().row - getRobotPos().row;
-    moveRobot(movex,movey);
+    goTo(goalptr,startptr);
+     //movex= getGoalPos().col - getRobotPos().col;
+    // movey= getGoalPos().row - getRobotPos().row;
+  //  moveRobot(movex,movey);
     printMaze();
     /*
     This function will keep running forever until the goal is reached.
