@@ -132,8 +132,10 @@ void goTo (Node * togoptr)
                 //|| neighbour->calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr)
                 if(!isInOpen(open,neighbour,opensize))
                 {
+                    neighbour->calculateFCost(startptr,togoptr);
                     neighbour->parent= current;
                     open[opensize]=neighbour;
+                    opensize++;
                 }
             }
                     cout<<"inside 2nd for "<<endl;
