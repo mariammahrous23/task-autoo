@@ -17,9 +17,9 @@ main.exe warehouse1.txt
 
 Node nodemap[__privates::mapSize][__privates::mapSize]; 
 
-void initialize() //return nodemap
+void initialize() 
 {
-   /*for (int row = 0; row < __privates::mapSize; row++)
+   for (int row = 0; row < __privates::mapSize; row++)
     {
         for (int col = 0; col < __privates::mapSize; col++)
         {
@@ -27,7 +27,7 @@ void initialize() //return nodemap
             Node temp(row,col,iswalakable);
             nodemap[row][col]=temp;
         }            
-    }*/
+    }
 
     //grid -> nodes in 2D array or map grid
     /*
@@ -38,7 +38,7 @@ void initialize() //return nodemap
 Node* getminfcost(Node *open[], int size) //needs more validation
 {
     Node* temp = nullptr;
-    int min = 999999; //dummy very large number, should be inf or 1st element
+    int min = 100000000000000; //dummy very large number, should be inf or 1st element
     for (int i=0; i<size; i++)
     {
         if (open[i]->fCost!=-1 && open[i]->fCost < min)
@@ -101,15 +101,6 @@ void generatepath(Stack<Node*> path, Node*start)
 
 void goTo (Node * togoptr)
 {
-     for (int row = 0; row < __privates::mapSize; row++)
-    {
-        for (int col = 0; col < __privates::mapSize; col++)
-        {
-            bool iswalakable = __privates::map[row][col];
-            Node temp(row,col,iswalakable);
-            nodemap[row][col]=temp;
-        }            
-    }
     Node start (getRobotPos().col,getRobotPos().row,true);
     Node* startptr = &start;
     Node * closed[121];
@@ -132,13 +123,13 @@ void goTo (Node * togoptr)
         {
             for(int j=current->y-1; j<=current->y+1; j++)
             {
-                Node neighbour = nodemap[i][j];
-                if(!neighbour.walkable || isInClosed(closed,&neighbour,closedsize))
+                Node* neighbour = &nodemap[i][j];
+                if(!neighbour->walkable || isInClosed(closed,neighbour,closedsize))
                 {continue;}
-                if(!isInOpen(open,&neighbour,opensize) || neighbour.calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr))
+                if(!isInOpen(open,neighbour,opensize) || neighbour->calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr))
                 {
-                    neighbour.parent= current;
-                    open[opensize]=&neighbour;
+                    neighbour->parent= current;
+                    open[opensize]=neighbour;
                 }
             }
         }
@@ -152,11 +143,8 @@ void goTo (Node * togoptr)
     //time to move robot by popping the nodes, calculating relative pos, giving it to the robot
     //pop , calc rel pos, move robot, get next, do again
     Node* nextmove = path.pop()->data;
-    cout<<"is there ay ma4kal or no? " <<endl;
     while (nextmove)
     {
-        cout<<"mafya4 ma4kal " <<endl;
-        printMaze();
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
