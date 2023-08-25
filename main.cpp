@@ -89,7 +89,7 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
     }
     return false;
 }
-void generatepath(stack<Node*> path, Node*start)
+void generatepath(stack<Node*> &path, Node*start)
 {
     cout<<"inside generate path"<<endl;
     if(start)
@@ -139,7 +139,7 @@ void goTo (Node * togoptr)
 
         }
         cout<<"before picked"<<endl;
-        picked = (current->x ==__privates::pickupPos.row) && (current->y= __privates::pickupPos.col);
+        picked = (current->x ==__privates::pickupPos.col) && (current->y= __privates::pickupPos.row);
         cout<<"after pickup"<<endl;
         cout << endl;
     }
