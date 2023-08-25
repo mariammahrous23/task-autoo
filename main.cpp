@@ -141,7 +141,7 @@ void solve()
     bool goalnotyetfound = true;
     Point G = getItemPos(); 
     Node Goal (G.row , G.col , true);
-    Node * Goalptr = &start;
+    Node * Goalptr = &Goal;
 
     //Algorthim
     while (goalnotyetfound)
