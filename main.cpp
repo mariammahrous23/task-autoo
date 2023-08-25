@@ -133,8 +133,6 @@ void goTo (Node * togoptr)
         removeFromOpen(open,current,opensize);
         closed[closedsize] = current;
         closedsize++;
-        cout<<"abl el for loop"<<endl;
-        printMaze();
         //traversing the 8 neighbouring cells of the 'current'
         for(int i=-1; i<=1; i++)
         {
@@ -160,13 +158,13 @@ void goTo (Node * togoptr)
                         neighbour->parent= current;
                         open[opensize]=neighbour;
                         opensize++;
-                    // cout<<"gowa el if" <<endl;
-                    // printMaze();
+                    
                     }
                 }
             }
 
         }
+        cout << "postion of current" << current->x << current->y;
         reached = (current->x ==togoptr->x) && (current->y == togoptr->y);
         // print maze byza mn abl hena bardo
        if (reached)
