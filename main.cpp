@@ -13,7 +13,9 @@ main.exe warehouse1.txt
 
 #include "warehouse.h"
 #include "Node.h"
+//#include "stack.h"
 #include <stack>
+
 
 Node nodemap[__privates::mapSize][__privates::mapSize]; 
 
@@ -38,7 +40,7 @@ void initialize()
 Node* getminfcost(Node *open[], int size) //needs more validation
 {
     Node* temp = nullptr;
-    int min = 100000000000000; //dummy very large number, should be inf or 1st element
+    int min = 276447232; //dummy very large number, should be inf or 1st element
     for (int i=0; i<size; i++)
     {
         if (open[i]->fCost!=-1 && open[i]->fCost < min)
@@ -87,9 +89,9 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
     }
     return false;
 }
-
-void generatepath(stack<Node*> path, Node*start)
+void generatepath(stack<Node*> &path, Node*start)
 {
+    cout<<"inside generate path"<<endl;
     if(start)
     {
         path.push(start);
@@ -101,7 +103,6 @@ void generatepath(stack<Node*> path, Node*start)
 
 void goTo (Node * togoptr)
 {
-    std::stack<Node*> path;
     Node start (getRobotPos().col,getRobotPos().row,true);
     Node* startptr = &start;
     Node * closed[121];
@@ -127,31 +128,38 @@ void goTo (Node * togoptr)
                 Node* neighbour = &nodemap[i][j];
                 if(!neighbour->walkable || isInClosed(closed,neighbour,closedsize))
                 {continue;}
-                if(!isInOpen(open,neighbour,opensize) || neighbour->calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr))
+                //|| neighbour->calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr)
+                if(!isInOpen(open,neighbour,opensize))
                 {
                     neighbour->parent= current;
                     open[opensize]=neighbour;
                 }
             }
-        }
-        picked = (current->x ==__privates::pickupPos.col) && (current->y= __privates::pickupPos.row);
-        if (picked)
-        {
-           generatepath(path,current);
-        }
-    }
+                    cout<<"inside 2nd for "<<endl;
 
+        }
+        cout<<"before picked"<<endl;
+        picked = (current->x ==__privates::pickupPos.col) && (current->y= __privates::pickupPos.row);
+        cout<<"after pickup"<<endl;
+        cout << endl;
+    }
+    cout<<"before comment"<<endl;
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
-    //std::stack<Node*> path;
-    //generatepath(path,current);
+    //Stack<Node*> path;
+    cout<<"First cout abl ma n3mal stack"<<endl;
+    std::stack<Node*> path;
+    cout<<"second cout b3d ma n3mal stack"<<endl;
+    generatepath(path,current);
     //now that the stack contains or nodes to the path
     //time to move robot by popping the nodes, calculating relative pos, giving it to the robot
     //pop , calc rel pos, move robot, get next, do again
     Node* nextmove = path.top();
     path.pop();
-    while (!path.empty())
+    cout<<"b3d generate"<<endl;
+    while (nextmove)
     {
+        cout<<"tab w hena?" << endl;
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
