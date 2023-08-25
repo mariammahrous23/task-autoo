@@ -13,7 +13,9 @@ main.exe warehouse1.txt
 
 #include "warehouse.h"
 #include "Node.h"
-#include "stack.h"
+//#include "stack.h"
+#include <stack>
+
 
 Node nodemap[__privates::mapSize][__privates::mapSize]; 
 
@@ -138,19 +140,22 @@ void goTo (Node * togoptr)
     }
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
-    Stack<Node*> path;
+    //Stack<Node*> path;
+    std::stack<Node*> path;
     generatepath(path,current);
     //now that the stack contains or nodes to the path
     //time to move robot by popping the nodes, calculating relative pos, giving it to the robot
     //pop , calc rel pos, move robot, get next, do again
-    Node* nextmove = path.pop()->data;
+    Node* nextmove = path.top();
+    path.pop();
     while (nextmove)
     {
         cout<<"tab w hena?" << endl;
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
-        nextmove = path.pop()->data;
+        nextmove = path.top();
+        path.pop();
     } 
 }
 
