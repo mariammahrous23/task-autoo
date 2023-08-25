@@ -196,15 +196,15 @@ void solve()
    Node start(getRobotPos().col, getRobotPos().row,true);
     Node* startptr = &start;
     goTo(pickptr,startptr);
-    int movex= getItemPos().col - getRobotPos().col;
-    int movey= getItemPos().row - getRobotPos().row;
-    moveRobot(movex,movey);
+    //int movex= getItemPos().col - getRobotPos().col;
+    //int movey= getItemPos().row - getRobotPos().row;
+    //moveRobot(movex,movey);
     printMaze();
     bool p = pickItem();
     goTo(goalptr,);
-     movex= getGoalPos().col - getRobotPos().col;
-      movey= getGoalPos().row - getRobotPos().row;
-      moveRobot(movex,movey);
+    // movex= getGoalPos().col - getRobotPos().col;
+    //  movey= getGoalPos().row - getRobotPos().row;
+     // moveRobot(movex,movey);
     printMaze();
     /*
     This function will keep running forever until the goal is reached.
