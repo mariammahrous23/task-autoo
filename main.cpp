@@ -191,7 +191,7 @@ void solve()
     }
     // pop  when movement 
     // when pushing relative position (ndyha ll move robot)
-    if (!path.empty()) 
+    while (!path.empty()) 
     { 
         cout<<"pop awl element";
      Node * move= path.top(); 
@@ -206,6 +206,7 @@ void solve()
      int c = (move->y) - (R.col) ; 
      
      moveRobot(r,c); 
+     printMaze();
        if (pickItem())
         {
             cout<<"edy ya mimo ya gamda" << endl;
