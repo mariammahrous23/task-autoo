@@ -89,8 +89,7 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
     }
     return false;
 }
-
-void generatepath(Stack<Node*> path, Node*start)
+void generatepath(stack<Node*> path, Node*start)
 {
     if(start)
     {
