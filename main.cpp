@@ -183,6 +183,7 @@ void goTo (Node * togoptr)
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
+        printMaze();
         nextmove = path.top();
         path.pop();
     
@@ -199,11 +200,13 @@ void solve()
     int movex= getItemPos().col - getRobotPos().col;
     int movey= getItemPos().row - getRobotPos().row;
     moveRobot(movex,movey);
+    printMaze();
     bool p = pickItem();
     goTo(goalptr);
      movex= getGoalPos().col - getRobotPos().col;
      movey= getGoalPos().row - getRobotPos().row;
     moveRobot(movex,movey);
+    printMaze();
     /*
     This function will keep running forever until the goal is reached.
 
