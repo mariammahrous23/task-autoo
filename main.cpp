@@ -123,7 +123,6 @@ void goTo (Node * togoptr)
         {
             for(int j=current->y-1; j<=current->y+1; j++)
             {
-                cout<<"do you come here ?" <<endl;
                 Node* neighbour = &nodemap[i][j];
                 if(!neighbour->walkable || isInClosed(closed,neighbour,closedsize))
                 {continue;}
@@ -147,6 +146,7 @@ void goTo (Node * togoptr)
     Node* nextmove = path.pop()->data;
     while (nextmove)
     {
+        cout<<"tab w hena?" << endl;
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
