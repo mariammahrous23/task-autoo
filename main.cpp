@@ -222,6 +222,7 @@ int main(int argc, char const *argv[])
 {
 
     // Initalize level
+    printMaze(); //bn check emta?
     initMaze(argv[1]);
     
     initialize();
