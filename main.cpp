@@ -139,7 +139,7 @@ void solve()
 
 
     bool goalnotyetfound = true;
-    Point G = getGoalPos(); 
+    Point G = getItemPos(); 
     Node Goal (G.row , G.col , true);
     Node * Goalptr = &start;
 
