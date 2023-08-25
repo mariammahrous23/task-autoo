@@ -16,7 +16,7 @@ main.exe warehouse1.txt
 #include <stack>
 
 std::stack<Node*> path;
-bool firsttime=true;
+//bool firsttime=true;
 
 //FOR now global 
 
@@ -174,8 +174,9 @@ void solve()
         }
 
         // save path bl stack (nrg3 bl parent) 
-        if (current->x == G.row && current->y == G.col && firsttime)
+        if (current->x == G.row && current->y == G.col && true)
         {
+            cout << " ana hena"
             goalnotyetfound=false;
             path.push(current); //The goal 
             while (current->parent) 
@@ -183,7 +184,6 @@ void solve()
                 path.push(current->parent) ; 
                 current = current->parent ; 
             } 
-            firsttime=false;
             break;
         }
     }
