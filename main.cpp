@@ -12,7 +12,7 @@ main.exe warehouse1.txt
 */
 
 #include "warehouse.h"
-#include "node.h"
+#include "Node.h"
 #include"stack.h"
 
 void initialize() //return nodemap
