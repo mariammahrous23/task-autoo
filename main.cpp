@@ -166,6 +166,7 @@ void goTo (Node * togoptr)
         nextmove = path.top();
         path.pop();
     }
+    cout <<"bra el while"<<endl;
 }
 
 void solve() 
