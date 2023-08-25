@@ -196,7 +196,8 @@ void solve()
     { 
      Node * move= path.top(); 
      path.pop();
-     
+     cout << "ana 3yza a move keda aba fy row " << move->x <<endl;
+     cout << "ana 3yza a move keda fy col " << move->x <<endl;
      // Intially right, down movements
      
      // (1) Up and (-1) down movement 
