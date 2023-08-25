@@ -21,7 +21,7 @@ Node nodemap[__privates::mapSize][__privates::mapSize];
 
 void initialize() 
 {
-   for (int row = 0; row < __privates::mapSize; row++)
+   /*for (int row = 0; row < __privates::mapSize; row++)
     {
         for (int col = 0; col < __privates::mapSize; col++)
         {
@@ -29,7 +29,7 @@ void initialize()
             Node temp(row,col,iswalakable);
             nodemap[row][col]=temp;
         }            
-    }
+    }*/
 
     //grid -> nodes in 2D array or map grid
     /*
@@ -102,6 +102,17 @@ void generatepath(stack<Node*> &path, Node*start)
 
 void goTo (Node * togoptr)
 {
+     for (int row = 0; row < __privates::mapSize; row++)
+    {
+        for (int col = 0; col < __privates::mapSize; col++)
+        {
+            bool iswalakable = __privates::map[row][col];
+            Node temp(row,col,iswalakable);
+            nodemap[row][col]=temp;
+        }            
+    }
+
+
    std::stack<Node*> path;
     Node start (getRobotPos().col,getRobotPos().row,true);
     Node* startptr = &start;
