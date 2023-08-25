@@ -152,8 +152,8 @@ void Getpath(Node * startptr , Goal * Goalptr)
     }
     // pop  when movement 
     // when pushing relative position (ndyha ll move robot)
-    //while (!path.empty()) 
-    for (int i =0 ; i<9 ; i++)
+    while (!path.empty()) 
+    //for (int i =0 ; i<9 ; i++)
     { 
      Node * move= path.top(); 
      path.pop();
