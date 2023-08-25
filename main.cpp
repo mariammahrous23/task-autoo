@@ -21,7 +21,7 @@ Node nodemap[__privates::mapSize][__privates::mapSize];
 
 void initialize() 
 {
-   for (int row = 0; row < __privates::mapSize; row++)
+   /*for (int row = 0; row < __privates::mapSize; row++)
     {
         for (int col = 0; col < __privates::mapSize; col++)
         {
@@ -29,7 +29,7 @@ void initialize()
             Node temp(row,col,iswalakable);
             nodemap[row][col]=temp;
         }            
-    }
+    }*/
 
     //grid -> nodes in 2D array or map grid
     /*
@@ -43,7 +43,7 @@ Node* getminfcost(Node *open[], int size) //needs more validation
     int min = 276447232; //dummy very large number, should be inf or 1st element
     for (int i=0; i<size; i++)
     {
-        if (open[i]->fCost!=-1 && open[i]->fCost < min)
+        if (open[i]->fCost < min)
         {
             min = open[i]->fCost;
             temp = open[i];
@@ -58,11 +58,12 @@ void removeFromOpen(Node *open[],Node * current, int &size)
     {
         if (open[i]->x==current->x && open[i]->y==current->y) //ashyak b operator overload
         {
-            open[i]=open[size-1];
-            open[size-1]=nullptr;
             size--;
+            open[i]=open[size];
+            open[size+1]=nullptr;
             break;
         }
+        
     }
 }
 
@@ -91,6 +92,7 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
 }
 void generatepath(stack<Node*> &path, Node*start)
 {
+    cout << "postion of current" << start->x << " "<< start->y;
     if(start)
     {
         path.push(start);
@@ -123,9 +125,7 @@ void goTo (Node * togoptr)
     open[0]=current;
     current->calculateFCost(startptr,togoptr);
     int opensize=1;
-    bool reached = (current->x ==togoptr->x) && (current->y == togoptr->y);;
-    cout<<"abl el while" << endl;
-    printMaze();
+    bool reached = false;
     //Node * MinFcostNode = nullptr; //for comparison with neighbours
     while(!reached)
     {
@@ -161,8 +161,7 @@ void goTo (Node * togoptr)
             }
 
         }
-        cout << "postion of current" << current->x << current->y;
-        reached = (current->x ==togoptr->x) && (current->y == togoptr->y);
+        reached = ((current->x ==togoptr->x) && (current->y == togoptr->y));
         // print maze byza mn abl hena bardo
        if (reached)
         {
