@@ -136,15 +136,17 @@ void goTo (Node * togoptr)
         cout<<"abl el for loop"<<endl;
         printMaze();
         //traversing the 8 neighbouring cells of the 'current'
-        for(int i= current->x-1; i<=current->x+1; i++)
+        for(int i=-1; i<=1; i++)
         {
-            for(int j=current->y-1; j<=current->y+1; j++)
+            for(int j=-1; j<=1; j++)
             {
-                Node* neighbour = &nodemap[i][j];
+                int r = (current->x) - i;
+                int c = (current->y) - j;
+                Node * neighbour = & nodemap[r][c];
                 if(!neighbour->walkable || isInClosed(closed,neighbour,closedsize))
                 {continue;}
                 //|| neighbour->calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr)
-                if(!isInOpen(open,neighbour,opensize))
+                else if(!isInOpen(open,neighbour,opensize))
                 {
                     neighbour->calculateFCost(startptr,togoptr);
                     neighbour->parent= current;
