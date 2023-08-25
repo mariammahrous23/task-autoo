@@ -145,6 +145,7 @@ void goTo (Node * togoptr)
        if (reached)
         {
            generatepath(path,current);
+           break;
         }
         cout << "path generated"<<endl;
     }
