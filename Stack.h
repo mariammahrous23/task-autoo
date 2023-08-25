@@ -16,7 +16,8 @@ public:
 
     T& pop() {
         if (!empty()) {
-            return data.pop_back();
+            data.pop_back();
+            return data.back();
         }
     }
 

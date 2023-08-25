@@ -160,7 +160,7 @@ void solve()
                 else if (!isInOpen(openlist , neighbour, actualopensize))
                 {
                     neighbour->calculateFCost(startptr,Goalptr);
-                    neighbour->parent = &current :
+                    neighbour->parent = &current ;
                     Openlist[actualopensize] = neighbour; 
                     actualopensize ++ ; 
                 }
