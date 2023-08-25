@@ -185,7 +185,8 @@ void solve()
     // when pushing relative position (ndyha ll move robot)
     if (!path.empty()) 
     { 
-     Node * move= stack.pop; 
+     Node * move= path.top(); 
+     path.pop();
      
      // Intially right, down movements
      
