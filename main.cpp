@@ -113,7 +113,7 @@ void goTo (Node * togoptr)
     open[0]=current;
     current->calculateFCost(startptr,togoptr);
     int opensize=1;
-    bool reached = (current->x ==togoptr->x) && (current->y= togoptr->y);;
+    bool reached = (current->x ==togoptr->x) && (current->y == togoptr->y);;
     //Node * MinFcostNode = nullptr; //for comparison with neighbours
     while(!reached)
     {
