@@ -19,7 +19,7 @@ Node nodemap[__privates::mapSize][__privates::mapSize];
 
 void initialize() //return nodemap
 {
-   for (int row = 0; row < __privates::mapSize; row++)
+   /*for (int row = 0; row < __privates::mapSize; row++)
     {
         for (int col = 0; col < __privates::mapSize; col++)
         {
@@ -27,7 +27,7 @@ void initialize() //return nodemap
             Node temp(row,col,iswalakable);
             nodemap[row][col]=temp;
         }            
-    }
+    }*/
 
     //grid -> nodes in 2D array or map grid
     /*
@@ -101,6 +101,15 @@ void generatepath(Stack<Node*> path, Node*start)
 
 void goTo (Node * togoptr)
 {
+     for (int row = 0; row < __privates::mapSize; row++)
+    {
+        for (int col = 0; col < __privates::mapSize; col++)
+        {
+            bool iswalakable = __privates::map[row][col];
+            Node temp(row,col,iswalakable);
+            nodemap[row][col]=temp;
+        }            
+    }
     Node start (getRobotPos().col,getRobotPos().row,true);
     Node* startptr = &start;
     Node * closed[121];
