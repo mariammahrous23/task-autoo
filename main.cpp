@@ -17,7 +17,6 @@ main.exe warehouse1.txt
 
 //FOR now global 
 Stack<int> myStack;
-myStack.push(10);
 
 void initialize()
 {
@@ -160,8 +159,8 @@ void solve()
                 else if (!isInOpen(openlist , neighbour, actualopensize))
                 {
                     neighbour->calculateFCost(startptr,Goalptr);
-                    neighbour->parent = &current ;
-                    Openlist[actualopensize] = neighbour; 
+                    neighbour->parent = current ;
+                    openlist[actualopensize] = neighbour; 
                     actualopensize ++ ; 
                 }
               
@@ -186,6 +185,7 @@ void solve()
 int main(int argc, char const *argv[])
 {
     // Initalize level
+    myStack.push(10);
     cout<< myStack.pop(); 
     cout<<endl;
     initMaze(argv[1]);
