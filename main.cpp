@@ -92,8 +92,6 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
 }
 void generatepath(stack<Node*> &path, Node*start)
 {
-     cout << "position"<< start->x << "  " << start->y <<endl; 
-
     if(start)
     {
         path.push(start);
@@ -127,8 +125,6 @@ void goTo (Node * togoptr)
     current->calculateFCost(startptr,togoptr);
     int opensize=1;
     bool reached = (current->x ==togoptr->x) && (current->y == togoptr->y);;
-    cout<<"abl el while" << endl;
-    printMaze();
     //Node * MinFcostNode = nullptr; //for comparison with neighbours
     while(!reached)
     {
@@ -164,7 +160,6 @@ void goTo (Node * togoptr)
             }
 
         }
-        cout << "postion of current" << current->x << current->y;
         reached = (current->x ==togoptr->x) && (current->y == togoptr->y);
         // print maze byza mn abl hena bardo
        if (reached)
@@ -185,8 +180,7 @@ void goTo (Node * togoptr)
     path.pop();
     while (!path.empty())
     {
-        //Print maza byza mn abl hena
-        cout<<"gowa tany while" <<endl;
+        cout << "position"<< start->x << "  " << start->y <<endl; 
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
