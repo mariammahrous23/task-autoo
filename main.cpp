@@ -149,6 +149,9 @@ void goTo (Node * togoptr)
                     open[opensize]=neighbour;
                     opensize++;
                 }
+                //Gowa el loop
+                cout<<"gowa el loop" <<endl;
+                printMaze();
             }
 
         }
