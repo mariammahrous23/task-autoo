@@ -91,6 +91,7 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
 }
 void generatepath(stack<Node*> path, Node*start)
 {
+    cout<<"inside generate path"<<endl;
     if(start)
     {
         path.push(start);
@@ -140,13 +141,16 @@ void goTo (Node * togoptr)
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
     //Stack<Node*> path;
+    cout<<"First cout abl ma n3mal stack"<<endl;
     std::stack<Node*> path;
+    cout<<"second cout b3d ma n3mal stack"<<endl;
     generatepath(path,current);
     //now that the stack contains or nodes to the path
     //time to move robot by popping the nodes, calculating relative pos, giving it to the robot
     //pop , calc rel pos, move robot, get next, do again
     Node* nextmove = path.top();
     path.pop();
+    cout<<"b3d generate"<<endl;
     while (nextmove)
     {
         cout<<"tab w hena?" << endl;
