@@ -163,6 +163,8 @@ void goTo (Node * togoptr)
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
+        printMaze();
+        cout<<endl;
         nextmove = path.top();
         path.pop();
     }
