@@ -13,7 +13,9 @@ main.exe warehouse1.txt
 
 #include "warehouse.h"
 #include "Node.h"
-#include "Stack.h"
+#include <stack>
+
+std::stack<int> myStack;
 
 //FOR now global 
 
