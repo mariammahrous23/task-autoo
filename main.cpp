@@ -136,7 +136,7 @@ void Getpath(Node * startptr , Node * Goalptr)
         }
 
         // save path bl stack (nrg3 bl parent) 
-        if (current->x == Goalptr->row && current->y == Goalptr->col && true)
+        if (current->x == Goalptr->x && current->y == Goalptr->y )
         {
             cout << " ana hena" <<endl;
             goalnotyetfound=false;
