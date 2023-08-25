@@ -17,7 +17,7 @@ main.exe warehouse1.txt
 #include <stack>
 
 
-Node nodemap[_privates::mapSize][_privates::mapSize]; 
+Node nodemap[__privates::mapSize][__privates::mapSize]; 
 
 void initialize() 
 {
@@ -108,7 +108,7 @@ void goTo (Node * togoptr)
     Node* startptr = &start;
     Node * closed[121];
     int closedsize =0;
-    Node * current = &nodemap[_privates::robotPos.row][_privates::robotPos.col];
+    Node * current = &nodemap[__privates::robotPos.row][__privates::robotPos.col];
     Node * open[121]; //max size, can be better optimised if linkedlist
     open[0]=current;
     current->calculateFCost(startptr,togoptr);
