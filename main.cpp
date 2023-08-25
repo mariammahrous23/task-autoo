@@ -90,15 +90,6 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
     }
     return false;
 }
-void generatepath(stack<Node*> &path, Node*start)
-{
-    if(start)
-    {
-        path.push(start);
-        generatepath(path,start->parent);
-    }
-    else {return;}
-}
 
 
 void goTo (Node * togoptr , Node * startptr)
@@ -163,10 +154,17 @@ void goTo (Node * togoptr , Node * startptr)
         // print maze byza mn abl hena bardo
        if (reached)
         {
-           generatepath(path,current);
-       
+            path.push(current); //The goal 
+            while (current->parent) 
+            { 
+                path.push(current->parent) ; 
+                current = current->parent ; 
+            } 
+            break;
         }
-    }
+    }      
+}
+
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
     //Stack<Node*> path;
@@ -203,7 +201,7 @@ void solve()
     moveRobot(movex,movey);
     printMaze();
     bool p = pickItem();
-    goTo(goalptr,startptr);
+    goTo(goalptr,);
      movex= getGoalPos().col - getRobotPos().col;
       movey= getGoalPos().row - getRobotPos().row;
       moveRobot(movex,movey);
