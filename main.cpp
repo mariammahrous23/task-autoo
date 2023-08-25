@@ -185,19 +185,13 @@ void goTo (Node * togoptr)
 
 void solve() 
 {
-    Node pickup(getItemPos().col,getItemPos().row,true);
+   Node pickup(getItemPos().col,getItemPos().row,true);
     Node * pickptr = &pickup;
     Node goal(getGoalPos().col, getGoalPos().row,true);
     Node* goalptr = &goal;
-    if(!pickItem())
-    {
-        goTo(pickptr);
-    }
-    else
-    {
-        goTo(goalptr);
-        cout<<"b3d el goal"<<endl;
-    }
+    goTo(pickptr);
+    bool p = pickItem();
+    goTo(goalptr);
 
     /*
     This function will keep running forever until the goal is reached.
