@@ -126,7 +126,8 @@ void goTo (Node * togoptr)
                 Node* neighbour = &nodemap[i][j];
                 if(!neighbour->walkable || isInClosed(closed,neighbour,closedsize))
                 {continue;}
-                if(!isInOpen(open,neighbour,opensize) || neighbour->calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr))
+                //|| neighbour->calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr)
+                if(!isInOpen(open,neighbour,opensize))
                 {
                     neighbour->parent= current;
                     open[opensize]=neighbour;
