@@ -206,7 +206,7 @@ void solve()
      int c = (move->y) - (R.col) ; 
      cout << "ana 3yza a move keda row " << r <<endl;
      cout << "ana 3yza a move keda col " << c <<endl;
-     moveRobot(r,c); 
+     moveRobot(c,r); 
      printMaze();
        if (pickItem())
         {
