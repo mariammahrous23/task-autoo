@@ -13,7 +13,11 @@ main.exe warehouse1.txt
 
 #include "warehouse.h"
 #include "Node.h"
+#include "Stack.h"
 
+//FOR now global 
+Stack<int> myStack;
+myStack.push(10);
 
 void initialize()
 {
@@ -75,7 +79,6 @@ bool isInOpen(Node* openlist[], Node* neighbour, int actualopensize)
 }
 
 
-
 void solve()
 {
     /*
@@ -113,11 +116,15 @@ void solve()
 
 
     // open list (kol hagat hawlena mro7nlha4)
-    int actualopensize = 1 ; //because i will auto add the robot pos
+    int actualopensize = 1 ; //because i will automatically add the robot pos
     Node * openlist [121]; 
+
+    // Adding robot position to open list
     Point R = getRobotPos();
     Node * current = &Grid [R.row][ R.col];
     openlist[0] = current;
+
+    // Start ptr
     Node start (R.row , R.col , true);
     Node * startptr = &start;
 
@@ -150,11 +157,14 @@ void solve()
                 {
                     //ABS NOTHING
                 }
-                else if (!isInOpen)
+                else if (!isInOpen(openlist , neighbour, actualopensize))
                 {
                     neighbour->calculateFCost(startptr,Goalptr);
-
+                    neighbour->parent = &current :
+                    Openlist[actualopensize] = neighbour; 
+                    actualopensize ++ ; 
                 }
+              
             }
         }
 
@@ -167,6 +177,7 @@ void solve()
     
 
     // save path bl stack (nrg3 bl parent recursion ba) 
+
     // pop  when movement 
     // when pushing relative position (ndyha ll move robot)
     
@@ -175,6 +186,8 @@ void solve()
 int main(int argc, char const *argv[])
 {
     // Initalize level
+    cout<< myStack.pop(); 
+    cout<<endl;
     initMaze(argv[1]);
 
     initialize();
