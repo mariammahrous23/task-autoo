@@ -79,7 +79,7 @@ bool isInOpen(Node* openlist[], Node* neighbour, int actualopensize)
     return false;
 }
 
-void Getpath(Node * startptr , Goal * Goalptr)
+void Getpath(Node * startptr , Node * Goalptr)
 {
     // 2D ARRAY / MAP
      Node  Grid [11][11];
@@ -97,7 +97,7 @@ void Getpath(Node * startptr , Goal * Goalptr)
     // open list (kol hagat hawlena mro7nlha4)
     int actualopensize = 1 ; //because i will automatically add the robot pos
     Node * openlist [121]; 
-    Node * current = &Grid [R.row][ R.col];
+    Node * current = &Grid [startptr->x][startptr->y];
     openlist[0] = current;
 
      // closed list  (kol el ro7nlo)
@@ -136,7 +136,7 @@ void Getpath(Node * startptr , Goal * Goalptr)
         }
 
         // save path bl stack (nrg3 bl parent) 
-        if (current->x == G.row && current->y == G.col && true)
+        if (current->x == Goalptr->row && current->y == Goalptr->col && true)
         {
             cout << " ana hena" <<endl;
             goalnotyetfound=false;
@@ -163,10 +163,10 @@ void Getpath(Node * startptr , Goal * Goalptr)
      // Intially right, down movements
      
      // (1) Up and (-1) down movement 
-     int r = (move->x) - (R.row) ; 
+     int r = (move->x) - (startptr->x) ; 
      
      // (1) right and (-1) left movement
-     int c = (move->y) - (R.col) ; 
+     int c = (move->y) - (startptr->y) ; 
      cout << "ana 3yza a move keda row " << r <<endl;
      cout << "ana 3yza a move keda col " << c <<endl;
      moveRobot(c,r); 
