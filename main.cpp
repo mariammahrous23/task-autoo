@@ -37,7 +37,7 @@ void initialize() //return nodemap
 Node* getminfcost(Node *open[], int size) //needs more validation
 {
     Node* temp = nullptr;
-    int min = 100000000000000; //dummy very large number, should be inf or 1st element
+    int min = 276447232; //dummy very large number, should be inf or 1st element
     for (int i=0; i<size; i++)
     {
         if (open[i]->fCost!=-1 && open[i]->fCost < min)
