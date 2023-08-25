@@ -113,17 +113,13 @@ void Getpath(Node * startptr , Node * Goalptr)
         closedlist[actualclosedsize]=current;
         actualclosedsize++;
 
-        //for (int i = -1 ; i <= 1 ; i++)
-       // {
-          // for (int j = -1 ; j <= 1 ; j++)
-        for(int i= current->x-1; i<=current->x+1; i++)
-        {
-            for(int j=current->y-1; j<=current->y+1; j++)
-            { 
-                //int r = (current->x) - i;
-                //int c = (current->y) - j;
-                //Node * neighbour = & Grid[r][c];
-                Node * neighbour = & Grid[i][j];
+     /*for (int i = -1 ; i <= 1 ; i++)
+       {
+           for (int j = -1 ; j <= 1 ; j++)
+          {
+                int r = (current->x) - i;
+                int c = (current->y) - j;
+                Node * neighbour = & Grid[r][c];
                 if ( !neighbour->walkable || isInClosed(closedlist , neighbour ,actualclosedsize )  )
                 {
                     //ABS NOTHING
@@ -136,6 +132,20 @@ void Getpath(Node * startptr , Node * Goalptr)
                     actualopensize ++ ; 
                 }
               
+            }
+        }*/
+        for(int i= current->x-1; i<=current->x+1; i++)
+        {
+            for(int j=current->y-1; j<=current->y+1; j++)
+            {
+                Node neighbour = nodemap[i][j];
+                if(!neighbour.walkable || isInClosed(closedlist,&neighbour,actualclosedsize))
+                {continue;}
+                if(!isInOpen(openlist,&neighbour,actualopensize) || neighbour.calculateFCost(startptr,Goalptr)<MinOpenNode(openlist, actualopensize)->calculateFCost(startptr,Goalptr))
+                    neighbour.parent= current;
+                    openlist[actualopensize]=&neighbour;
+                    actualopensize ++ ; 
+                }
             }
         }
 
