@@ -120,9 +120,10 @@ void Getpath(Node * startptr , Node * Goalptr)
         {
             for(int j=current->y-1; j<=current->y+1; j++)
             { 
-                int r = (current->x) - i;
-                int c = (current->y) - j;
-                Node * neighbour = & Grid[r][c];
+                //int r = (current->x) - i;
+                //int c = (current->y) - j;
+                //Node * neighbour = & Grid[r][c];
+                Node * neighbour = & Grid[i][j];
                 if ( !neighbour->walkable || isInClosed(closedlist , neighbour ,actualclosedsize )  )
                 {
                     //ABS NOTHING
