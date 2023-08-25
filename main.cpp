@@ -139,7 +139,7 @@ void goTo (Node * togoptr)
 
         }
         cout<<"before picked"<<endl;
-        picked = (current->x ==__privates::pickupPos.col) && (current->y= __privates::pickupPos.row);
+        picked = (current->x ==__privates::pickupPos.row) && (current->y= __privates::pickupPos.col);
         cout<<"after pickup"<<endl;
         cout << endl;
     }
