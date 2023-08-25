@@ -15,7 +15,7 @@ main.exe warehouse1.txt
 #include "Node.h"
 #include <stack>
 
-std::stack<Node> path;
+std::stack<Node*> path;
 
 //FOR now global 
 
@@ -190,10 +190,10 @@ void solve()
      // Intially right, down movements
      
      // (1) Up and (-1) down movement 
-     int r = (move->x) - (R->row) ; 
+     int r = (move->x) - (R.row) ; 
      
      // (1) right and (-1) left movement
-     int c = (move-y) - (R->col) ; 
+     int c = (move-y) - (R.col) ; 
      
      moverobot(r,c); 
        if (pickItem())
