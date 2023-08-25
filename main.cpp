@@ -202,8 +202,10 @@ void solve()
     int movey= getItemPos().row - getRobotPos().row;
     moveRobot(movex,movey);
     bool p = pickItem();
-    //goTo(goalptr);
-
+    goTo(goalptr);
+     movex= getGoalPos().col - getRobotPos().col;
+     movey= getGoalPos().row - getRobotPos().row;
+    moveRobot(movex,movey);
     /*
     This function will keep running forever until the goal is reached.
 
@@ -242,11 +244,6 @@ int main(int argc, char const *argv[])
         {
             // Hurray!
             cout << "Reached Goal!" << endl;
-            break;
-        }
-        if ((getRobotPos().row == getItemPos().row) && (getRobotPos().col == getItemPos().col))
-        {
-            cout<<"ana wslt";
             break;
         }
         // Solve maze
