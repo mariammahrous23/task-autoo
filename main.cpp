@@ -241,7 +241,11 @@ int main(int argc, char const *argv[])
             cout << "Reached Goal!" << endl;
             break;
         }
-
+        if ((getRobotPos().row == getItemPos().row) && (getRobotPos().col == getItemPos().col))
+        {
+            cout<<"ana wslt";
+            break;
+        }
         // Solve maze
         solve(); 
     }
