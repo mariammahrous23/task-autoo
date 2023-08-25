@@ -168,7 +168,7 @@ void goTo (Node * togoptr)
        
         }
     }
-    
+
     cout << "pos" << current->x << current->y; 
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
@@ -200,7 +200,7 @@ void solve()
     Node* goalptr = &goal;
     goTo(pickptr);
     bool p = pickItem();
-    goTo(goalptr);
+    //goTo(goalptr);
 
     /*
     This function will keep running forever until the goal is reached.
