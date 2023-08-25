@@ -16,6 +16,7 @@ main.exe warehouse1.txt
 #include <stack>
 
 std::stack<Node*> path;
+bool firsttime=true;
 
 //FOR now global 
 
@@ -78,6 +79,10 @@ bool isInOpen(Node* openlist[], Node* neighbour, int actualopensize)
     return false;
 }
 
+void Findpath()
+{
+
+}
 
 void solve()
 {
@@ -169,7 +174,7 @@ void solve()
         }
 
         // save path bl stack (nrg3 bl parent) 
-        if (current->x == G.row && current->y == G.col)
+        if (current->x == G.row && current->y == G.col && firsttime)
         {
             goalnotyetfound=false;
             path.push(current); //The goal 
@@ -178,6 +183,7 @@ void solve()
                 path.push(current->parent) ; 
                 current = current->parent ; 
             } 
+            firsttime=false;
             break;
         }
     }
