@@ -115,7 +115,7 @@ void Getpath(Node * startptr , Node * Goalptr)
 
         for (int i = -1 ; i <= 1 ; i++)
         {
-           for (int j = -1 ; i <= 1 ; i++)
+           for (int j = -1 ; j <= 1 ; j++)
             { 
                 int r = (current->x) - i;
                 int c = (current->y) - j;
