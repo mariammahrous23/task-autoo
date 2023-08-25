@@ -63,7 +63,7 @@ void removeFromOpen(Node *open[],Node * current, int &size)
             open[size+1]=nullptr;
             break;
         }
-        
+        // 
     }
 }
 
@@ -92,7 +92,8 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
 }
 void generatepath(stack<Node*> &path, Node*start)
 {
-    cout << "postion of current" << start->x << " "<< start->y;
+     cout << "position"<< start->x << "  " << start->y <<endl; 
+
     if(start)
     {
         path.push(start);
@@ -125,7 +126,9 @@ void goTo (Node * togoptr)
     open[0]=current;
     current->calculateFCost(startptr,togoptr);
     int opensize=1;
-    bool reached = false;
+    bool reached = (current->x ==togoptr->x) && (current->y == togoptr->y);;
+    cout<<"abl el while" << endl;
+    printMaze();
     //Node * MinFcostNode = nullptr; //for comparison with neighbours
     while(!reached)
     {
@@ -161,7 +164,8 @@ void goTo (Node * togoptr)
             }
 
         }
-        reached = ((current->x ==togoptr->x) && (current->y == togoptr->y));
+        cout << "postion of current" << current->x << current->y;
+        reached = (current->x ==togoptr->x) && (current->y == togoptr->y);
         // print maze byza mn abl hena bardo
        if (reached)
         {
