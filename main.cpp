@@ -143,6 +143,8 @@ void goTo (Node * togoptr)
                 int r = (current->x) - i;
                 int c = (current->y) - j;
                 Node * neighbour = & nodemap[r][c];
+                cout<<"b3d el intialization" <<endl;
+                printMaze();
                 if(!neighbour->walkable || isInClosed(closed,neighbour,closedsize))
                 {continue;}
                 //|| neighbour->calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr)
@@ -152,10 +154,10 @@ void goTo (Node * togoptr)
                     neighbour->parent= current;
                     open[opensize]=neighbour;
                     opensize++;
+                    cout<<"gowa el if" <<endl;
+                    printMaze();
                 }
-                //Gowa el loop
-                cout<<"gowa el loop" <<endl;
-                printMaze();
+                
             }
 
         }
