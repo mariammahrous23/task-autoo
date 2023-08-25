@@ -141,7 +141,7 @@ void Getpath(Node * startptr , Node * Goalptr)
                 Node neighbour = Grid[i][j];
                 if(!neighbour.walkable || isInClosed(closedlist,&neighbour,actualclosedsize))
                 {continue;}
-                if(!isInOpen(openlist,&neighbour,actualopensize) || neighbour.calculateFCost(startptr,Goalptr)<MinOpenNode(openlist, actualopensize)->calculateFCost(startptr,Goalptr))
+                if(!isInOpen(openlist,&neighbour,actualopensize))
                 {
                     neighbour.parent= current;
                     openlist[actualopensize]=&neighbour;
