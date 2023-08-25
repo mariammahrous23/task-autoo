@@ -79,32 +79,8 @@ bool isInOpen(Node* openlist[], Node* neighbour, int actualopensize)
     return false;
 }
 
-void Findpath()
+void Getpath(Node * startptr , Goal * Goalptr)
 {
-
-}
-
-void solve()
-{
-    /*
-    This function will keep running forever until the goal is reached.
-
-    You can access the warehouse API through below functions.
-
-    Sense and Control:
-        isWalkable(right, down): checks if cell around robot is walkable (right: [-1 0 1], down: [-1 0 1])
-        moveRobot(right, down): moves player one step (right: [-1 0 1], down: [-1 0 1])
-
-    Global Info:
-        getRobotPos(): gets robot position in warehouse
-        getGoalPos()  : gets goal position in warehouse
-        getItemPos() : gets item position in warehouse
-
-    Debugging:
-        printMaze()  : prints warehouse as a whole
-        printAround(): prints part of warehouse around robot
-    */
-
     // 2D ARRAY / MAP
      Node  Grid [11][11];
       for (int row = 0; row < 11; row++)
@@ -117,36 +93,21 @@ void solve()
                 Grid[row][col] = temp; 
             }
         }
-
-
-
+    
     // open list (kol hagat hawlena mro7nlha4)
     int actualopensize = 1 ; //because i will automatically add the robot pos
     Node * openlist [121]; 
-
-    // Adding robot position to open list
-    Point R = getRobotPos();
     Node * current = &Grid [R.row][ R.col];
     openlist[0] = current;
 
-    // Start ptr
-    Node start (R.row , R.col , true);
-    Node * startptr = &start;
-
-    // closed list  (kol el ro7nlo)
+     // closed list  (kol el ro7nlo)
     Node * closedlist [121];
-    int actualclosedsize = 0 ; 
-
-
+    int actualclosedsize = 0 ;
     bool goalnotyetfound = true;
-    Point G = getItemPos(); 
-    Node Goal (G.row , G.col , true);
-    Node * Goalptr = &Goal;
-
-    //Algorthim
+    
+     //Algorthim
     while (goalnotyetfound)
     {
-        cout << "inside algo" << endl;
         current = MinOpenNode(openlist,actualopensize);
         removecurrent(openlist,actualopensize,current);
         closedlist[actualclosedsize]=current;
@@ -196,8 +157,9 @@ void solve()
     { 
      Node * move= path.top(); 
      path.pop();
+     
      cout << "ana 3yza a move keda aba fy row " << move->x <<endl;
-     cout << "ana 3yza a move keda fy col " << move->x <<endl;
+     cout << "ana 3yza a move keda fy col " << move->y <<endl;
      // Intially right, down movements
      
      // (1) Up and (-1) down movement 
@@ -216,6 +178,52 @@ void solve()
 
      
     } 
+
+
+}
+
+void solve()
+{
+    /*
+    This function will keep running forever until the goal is reached.
+
+    You can access the warehouse API through below functions.
+
+    Sense and Control:
+        isWalkable(right, down): checks if cell around robot is walkable (right: [-1 0 1], down: [-1 0 1])
+        moveRobot(right, down): moves player one step (right: [-1 0 1], down: [-1 0 1])
+
+    Global Info:
+        getRobotPos(): gets robot position in warehouse
+        getGoalPos()  : gets goal position in warehouse
+        getItemPos() : gets item position in warehouse
+
+    Debugging:
+        printMaze()  : prints warehouse as a whole
+        printAround(): prints part of warehouse around robot
+    */
+
+
+    // Robot, Goal,pickup
+    Point R = getRobotPos();
+    Node start (R.row , R.col , true);
+    Node * startptr = &start;
+
+    Point G = getGoalPos(); 
+    Point P = getItemPos(); 
+    Node Goal (G.row , G.col , true);
+    Node Pick (P.row , P.col , true);
+    if (pickItem())
+    {
+        Node * Goalptr = &Goal;
+        Getpath(startptr ,Goalptr );
+    }
+    else 
+    {
+        Node * Goalptr = &Pick;
+        Getpath(startptr ,Goalptr );
+    }
+   
     
 }
 
