@@ -151,11 +151,13 @@ void goTo (Node * togoptr)
 
         }
         reached = (current->x ==togoptr->x) && (current->y == togoptr->y);
+        cout<<"abl el generatepath"<<endl;
+        printMaze(); 
        if (reached)
         {
            generatepath(path,current);
-           cout<<"abl ma atl3 mn awl while" <<endl;
-           break;
+        cout<<"b3d el generatepath"<<endl;
+        printMaze();            break;
         }
     }
     //by the end of this loop, robot has picked up the item and the current = pickup pos
@@ -170,12 +172,11 @@ void goTo (Node * togoptr)
     path.pop();
     while (!path.empty())
     {
-        printMaze();
+        //Print maza byza mn abl hena
         cout<<"gowa tany while" <<endl;
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
-        printMaze();
         cout<<endl;
         nextmove = path.top();
         path.pop();
