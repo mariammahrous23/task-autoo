@@ -191,9 +191,9 @@ void solve()
     }
     // pop  when movement 
     // when pushing relative position (ndyha ll move robot)
-    while (!path.empty()) 
+    //while (!path.empty()) 
+    for (int i =0 ; i<6 ; i++)
     { 
-        cout<<"pop awl element";
      Node * move= path.top(); 
      path.pop();
      
