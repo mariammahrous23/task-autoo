@@ -198,6 +198,9 @@ void solve()
     Node goal(getGoalPos().col, getGoalPos().row,true);
     Node* goalptr = &goal;
     goTo(pickptr);
+    int movex= getItemPos().col - getRobotPos().col;
+    int movey= getItemPos().row - getRobotPos().row;
+    moveRobot(movex,movey);
     bool p = pickItem();
     //goTo(goalptr);
 
