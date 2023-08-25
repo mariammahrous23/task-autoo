@@ -124,7 +124,7 @@ void goTo (Node * togoptr)
     current->calculateFCost(startptr,togoptr);
     int opensize=1;
     bool reached = (current->x ==togoptr->x) && (current->y == togoptr->y);;
-    cout<<"abl el while"
+    cout<<"abl el while" << endl;
     printMaze();
     //Node * MinFcostNode = nullptr; //for comparison with neighbours
     while(!reached)
