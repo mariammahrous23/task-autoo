@@ -89,14 +89,14 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
     }
     return false;
 }
-void generatepath(stack<Node*> path, Node*start)
+void generatepath(stack<Node*> &path, Node*start)
 {
-   while(start)
-   {
-    path.push(start);
-    start=start->parent;
-   }
-   return;
+    if(start)
+    {
+        path.push(start);
+        generatepath(path,start->parent);
+    }
+    else {return;}
 }
 
 
@@ -178,6 +178,7 @@ void goTo (Node * togoptr)
         cout<<endl;
         nextmove = path.top();
         path.pop();
+        printMaze();
     }
     cout <<"bra el while"<<endl;
 }
