@@ -163,7 +163,7 @@ void goTo (Node * togoptr , Node * startptr)
             break;
         }
     }      
-}
+
 
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
@@ -173,7 +173,7 @@ void goTo (Node * togoptr , Node * startptr)
     //now that the stack contains or nodes to the path
     //time to move robot by popping the nodes, calculating relative pos, giving it to the robot
     //pop , calc rel pos, move robot, get next, do again
-   Node* nextmove = path.top();
+    Node* nextmove = path.top();
     path.pop();
     while (!path.empty())
     {
@@ -201,7 +201,7 @@ void solve()
     //moveRobot(movex,movey);
     printMaze();
     bool p = pickItem();
-    goTo(goalptr,);
+    goTo(goalptr,startptr);
     // movex= getGoalPos().col - getRobotPos().col;
     //  movey= getGoalPos().row - getRobotPos().row;
      // moveRobot(movex,movey);
