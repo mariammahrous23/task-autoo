@@ -133,6 +133,8 @@ void goTo (Node * togoptr)
         removeFromOpen(open,current,opensize);
         closed[closedsize] = current;
         closedsize++;
+        cout<<"abl el for loop"<<endl;
+        printMaze();
         //traversing the 8 neighbouring cells of the 'current'
         for(int i= current->x-1; i<=current->x+1; i++)
         {
