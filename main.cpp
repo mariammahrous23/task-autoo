@@ -193,7 +193,7 @@ void solve()
     // when pushing relative position (ndyha ll move robot)
     if (!path.empty()) 
     { 
-        cout<<'pop awl element';
+        cout<<"pop awl element";
      Node * move= path.top(); 
      path.pop();
      
