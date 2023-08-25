@@ -89,19 +89,14 @@ bool isInOpen(Node* open[], Node* neighbour, int size)
     }
     return false;
 }
-void generatepath(stack<Node*> &path, Node*start , Node * togoptr)
+void generatepath(stack<Node*> path, Node*start)
 {
-     if (start->x == togoptr->x && start->y == togoptr->y )
-        {
-         
-            path.push(start); //The goal 
-            while (start->parent) 
-            { 
-                path.push(start->parent) ; 
-                start = start->parent ; 
-            } 
-            
-        }
+   while(start)
+   {
+    path.push(start);
+    start=start->parent;
+   }
+   return;
 }
 
 
@@ -158,7 +153,7 @@ void goTo (Node * togoptr)
         reached = (current->x ==togoptr->x) && (current->y == togoptr->y);
        if (reached)
         {
-           generatepath(path,current,togoptr);
+           generatepath(path,current);
            cout<<"abl ma atl3 mn awl while" <<endl;
            break;
         }
