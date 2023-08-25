@@ -154,8 +154,8 @@ void goTo (Node * togoptr)
                     neighbour->parent= current;
                     open[opensize]=neighbour;
                     opensize++;
-                    cout<<"gowa el if" <<endl;
-                    printMaze();
+                   // cout<<"gowa el if" <<endl;
+                   // printMaze();
                 }
                 
             }
