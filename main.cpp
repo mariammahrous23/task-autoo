@@ -135,8 +135,13 @@ void goTo (Node * togoptr)
                     open[opensize]=neighbour;
                 }
             }
+                    cout<<"inside 2nd for "<<endl;
+
         }
+        cout<<"before picked"<<endl;
         picked = (current->x ==__privates::pickupPos.col) && (current->y= __privates::pickupPos.row);
+        out<<"after pickup"<<endl;
+
     }
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
