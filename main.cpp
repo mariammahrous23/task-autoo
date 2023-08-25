@@ -175,7 +175,7 @@ void solve()
             path.push(current); //The goal 
             while (current->parent) 
             { 
-                push (current->parent) ; 
+                path.push(current->parent) ; 
                 current = current->parent ; 
             } 
             break;
@@ -193,9 +193,9 @@ void solve()
      int r = (move->x) - (R.row) ; 
      
      // (1) right and (-1) left movement
-     int c = (move-y) - (R.col) ; 
+     int c = (move->y) - (R.col) ; 
      
-     moverobot(r,c); 
+     moveRobot(r,c); 
        if (pickItem())
         {
             cout<<"edy ya mimo ya gamda" << endl;
