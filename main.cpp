@@ -192,7 +192,7 @@ void solve()
     // pop  when movement 
     // when pushing relative position (ndyha ll move robot)
     //while (!path.empty()) 
-    for (int i =0 ; i<6 ; i++)
+    for (int i =0 ; i<9 ; i++)
     { 
      Node * move= path.top(); 
      path.pop();
@@ -204,7 +204,8 @@ void solve()
      
      // (1) right and (-1) left movement
      int c = (move->y) - (R.col) ; 
-     
+     cout << "ana 3yza a move keda row " << r <<endl;
+     cout << "ana 3yza a move keda col " << c <<endl;
      moveRobot(r,c); 
      printMaze();
        if (pickItem())
