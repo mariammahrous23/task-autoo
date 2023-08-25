@@ -21,7 +21,7 @@ Node nodemap[__privates::mapSize][__privates::mapSize];
 
 void initialize() 
 {
-   /*for (int row = 0; row < __privates::mapSize; row++)
+   for (int row = 0; row < __privates::mapSize; row++)
     {
         for (int col = 0; col < __privates::mapSize; col++)
         {
@@ -29,7 +29,7 @@ void initialize()
             Node temp(row,col,iswalakable);
             nodemap[row][col]=temp;
         }            
-    }*/
+    }
 
     //grid -> nodes in 2D array or map grid
     /*
@@ -103,7 +103,7 @@ void generatepath(stack<Node*> &path, Node*start)
 
 void goTo (Node * togoptr)
 {
-     for (int row = 0; row < __privates::mapSize; row++)
+    /* for (int row = 0; row < __privates::mapSize; row++)
     {
         for (int col = 0; col < __privates::mapSize; col++)
         {
@@ -111,7 +111,7 @@ void goTo (Node * togoptr)
             Node temp(row,col,iswalakable);
             nodemap[row][col]=temp;
         }            
-    }
+    }*/
 
 
    std::stack<Node*> path;
@@ -168,8 +168,6 @@ void goTo (Node * togoptr)
        
         }
     }
-
-    cout << "pos" << current->x << current->y; 
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
     //Stack<Node*> path;
@@ -231,9 +229,7 @@ int main(int argc, char const *argv[])
 
     // Initalize level
     initMaze(argv[1]);
-        printMaze(); //bn check emta?
 
-    
     initialize();
 
     // Game loop
