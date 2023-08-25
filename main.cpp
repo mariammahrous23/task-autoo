@@ -168,6 +168,8 @@ void goTo (Node * togoptr)
        
         }
     }
+    
+    cout << "pos" << current->x << current->y; 
     //by the end of this loop, robot has picked up the item and the current = pickup pos
     //now we recurse back with parents and put the nodes in a stack
     //Stack<Node*> path;
@@ -180,7 +182,6 @@ void goTo (Node * togoptr)
     path.pop();
     while (!path.empty())
     {
-        cout << "position"<< nextmove->x << "  " << nextmove->y <<endl; 
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
@@ -189,7 +190,6 @@ void goTo (Node * togoptr)
         path.pop();
     
     }
-    cout <<"bra el while"<<endl;
 }
 
 void solve() 
