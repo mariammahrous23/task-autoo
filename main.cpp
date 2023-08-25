@@ -186,9 +186,8 @@ void solve()
 int main(int argc, char const *argv[])
 {
     // Initalize level
-    Stack<int> myStack;
     myStack.push(10);
-    cout<< myStack.pop(); 
+    cout<< myStack.top(); 
     cout<<endl;
     initMaze(argv[1]);
 
