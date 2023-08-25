@@ -17,7 +17,8 @@ main.exe warehouse1.txt
 #include <stack>
 
 
-Node nodemap[__privates::mapSize][__privates::mapSize]; 
+Node nodemap[11][11]; 
+std::stack<Node*> path;
 
 void initialize() 
 {
@@ -102,9 +103,9 @@ void generatepath(stack<Node*> &path, Node*start)
 
 void goTo (Node * togoptr)
 {
-     for (int row = 0; row < __privates::mapSize; row++)
+     for (int row = 0; row < 11; row++)
     {
-        for (int col = 0; col < __privates::mapSize; col++)
+        for (int col = 0; col <11; col++)
         {
             bool iswalakable = __privates::map[row][col];
             Node temp(row,col,iswalakable);
@@ -113,7 +114,7 @@ void goTo (Node * togoptr)
     }
 
 
-   std::stack<Node*> path;
+   //std::stack<Node*> path;
     Node start (getRobotPos().col,getRobotPos().row,true);
     Node* startptr = &start;
     Node * closed[121];
