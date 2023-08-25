@@ -180,7 +180,7 @@ void goTo (Node * togoptr)
     path.pop();
     while (!path.empty())
     {
-        cout << "position"<< start->x << "  " << start->y <<endl; 
+        cout << "position"<< nextmove->x << "  " << nextmove->y <<endl; 
         int movex = nextmove->x - getRobotPos().col;
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
