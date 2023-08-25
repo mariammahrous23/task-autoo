@@ -13,11 +13,12 @@ main.exe warehouse1.txt
 
 #include "warehouse.h"
 #include "Node.h"
-#include"stack.h"
+#include "stack.h"
+
+Node nodemap[__privates::mapSize][__privates::mapSize]; 
 
 void initialize() //return nodemap
 {
-    Node nodemap[__privates::mapSize][__privates::mapSize]; 
    for (int row = 0; row < __privates::mapSize; row++)
     {
         for (int col = 0; col < __privates::mapSize; col++)
@@ -37,7 +38,7 @@ void initialize() //return nodemap
 Node* getminfcost(Node *open[], int size) //needs more validation
 {
     Node* temp = nullptr;
-    int min = 276447232; //dummy very large number, should be inf or 1st element
+    int min = 100000000000000; //dummy very large number, should be inf or 1st element
     for (int i=0; i<size; i++)
     {
         if (open[i]->fCost!=-1 && open[i]->fCost < min)
@@ -98,38 +99,16 @@ void generatepath(Stack<Node*> path, Node*start)
 }
 
 
-void solve() //nestelem el nodemap
+void goTo (Node * togoptr)
 {
-/////////////////
-   Node nodemap[__privates::mapSize][__privates::mapSize]; 
-   for (int row = 0; row < __privates::mapSize; row++)
-    {
-        for (int col = 0; col < __privates::mapSize; col++)
-        {
-            bool iswalakable = __privates::map[row][col];
-            Node temp(row,col,iswalakable);
-            nodemap[row][col]=temp;
-        }            
-    }
-  
-   Node start (getRobotPos().col,getRobotPos().row,true);
-   Node* startptr = &start;
-   Node pickup(getItemPos().col,getItemPos().row,true);
-   Node * pickptr = &pickup;
-/////////////////
-    //open list
-    //closed list
-    //hanerga3 bel parent n.save el path by pushing b recursion stack
-    //pop to move robot
-    //calc relative position
-    //give params to move robot
-
+    Node start (getRobotPos().col,getRobotPos().row,true);
+    Node* startptr = &start;
     Node * closed[121];
     int closedsize =0;
     Node * current = &nodemap[__privates::robotPos.row][__privates::robotPos.col];
     Node * open[121]; //max size, can be better optimised if linkedlist
     open[0]=current;
-    current->calculateFCost(startptr,pickptr);
+    current->calculateFCost(startptr,togoptr);
     int opensize=1;
     bool picked = (current->x ==__privates::pickupPos.col) && (current->y= __privates::pickupPos.row);
     //Node * MinFcostNode = nullptr; //for comparison with neighbours
@@ -147,7 +126,7 @@ void solve() //nestelem el nodemap
                 Node neighbour = nodemap[i][j];
                 if(!neighbour.walkable || isInClosed(closed,&neighbour,closedsize))
                 {continue;}
-                if(!isInOpen(open,&neighbour,opensize) || neighbour.calculateFCost(startptr,pickptr)<getminfcost(open, opensize)->calculateFCost(startptr,pickptr))
+                if(!isInOpen(open,&neighbour,opensize) || neighbour.calculateFCost(startptr,togoptr)<getminfcost(open, opensize)->calculateFCost(startptr,togoptr))
                 {
                     neighbour.parent= current;
                     open[opensize]=&neighbour;
@@ -170,9 +149,18 @@ void solve() //nestelem el nodemap
         int movey = nextmove->y - getRobotPos().row;
         moveRobot(movex,movey);
         nextmove = path.pop()->data;
-    }
-    //by end of this while loop, robot would have reached the pickup pos
-    //same algorithm is to be repeated for the pickup to destination part
+    } 
+}
+
+void solve() 
+{
+    Node pickup(getItemPos().col,getItemPos().row,true);
+    Node * pickptr = &pickup;
+    Node goal(getGoalPos().col, getGoalPos().row,true);
+    Node* goalptr = &goal;
+    goTo(pickptr);
+    bool p = pickItem();
+    goTo(goalptr);
 
     /*
     This function will keep running forever until the goal is reached.
