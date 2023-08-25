@@ -1,0 +1,8 @@
+How this code works :
+
+nodemap is a class at which the textfile of the map is converted to a map of nodes
+the initialise fn handles the entry conditions of the data members of nodemap
+a fn is made called goTo that takes a parameter of the next point that a robot should move to 
+this fn is called inside the solve fn 
+there is an array of struct [p,d] that would handle multiple pickups and destinations
+
