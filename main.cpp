@@ -168,8 +168,6 @@ void Getpath(Node * startptr , Node * Goalptr)
      int c = (move->y) - (startptr->y) ; 
 
      moveRobot(c,r); 
-     printMaze();
-     cout << endl;
     } 
 
 
